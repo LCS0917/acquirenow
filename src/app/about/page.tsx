@@ -29,7 +29,7 @@ export default async function AboutPage() {
   return (
     <div className="bg-white min-h-screen">
       {/* Header */}
-      <section className="pt-32 pb-48 border-b border-brand-neutral overflow-hidden relative">
+      <section className="pt-20 pb-24 border-b border-brand-neutral overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-neutral/50 skew-x-[-12deg] translate-x-20" />
         {/* Soft Ring Motif Fragment */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] border-[30px] border-brand-plum/5 rounded-full translate-x-1/4 -translate-y-1/4 pointer-events-none" />
@@ -44,19 +44,19 @@ export default async function AboutPage() {
                 </div>
                 <div className="absolute bottom-10 left-10 right-10">
                    <div className="h-px w-10 bg-brand-gold mb-6" />
-                   <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.4em]">Strategic Lead</p>
+                   <p className="text-white/70 text-[12px] font-bold uppercase tracking-[0.4em]">Strategic Lead</p>
                 </div>
               </div>
             </div>
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-4 mb-10">
-                <span className="px-4 py-1.5 bg-brand-plum/5 text-brand-plum text-[10px] font-bold uppercase tracking-[0.3em] rounded-full border border-brand-plum/10">Lena Shaw</span>
+              <div className="flex items-center gap-4 mb-8">
+                <span className="px-4 py-1.5 bg-brand-plum/5 text-brand-plum text-[12px] font-bold uppercase tracking-[0.3em] rounded-full border border-brand-plum/10">Lena Shaw</span>
                 <div className="h-px w-12 bg-brand-plum/10" />
               </div>
-              <h1 className="text-6xl lg:text-8xl mb-10 tracking-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight">
                 {about.headline}
               </h1>
-              <p className="text-2xl text-brand-plum/50 leading-relaxed italic border-l-4 border-brand-gold pl-10 max-w-2xl">
+              <p className="text-xl md:text-2xl text-brand-plum/80 leading-relaxed italic border-l-4 border-brand-gold pl-10 max-w-2xl">
                 {about.summary}
               </p>
             </div>
@@ -65,22 +65,22 @@ export default async function AboutPage() {
       </section>
 
       {/* Experience Highlights */}
-      <section className="py-32 lg:py-48 bg-brand-neutral/20">
+      <section className="py-20 lg:py-32 bg-brand-neutral/20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-32">
-             <h2 className="text-xs font-bold uppercase tracking-[0.6em] text-brand-plum/60">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
+             <h2 className="text-[12px] font-bold uppercase tracking-[0.6em] text-brand-plum/80">
                {about.highlightsHeadline}
              </h2>
              <div className="h-px flex-1 bg-brand-plum/10 hidden md:block" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-32">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-20">
             {about.highlights.map((highlight, i) => (
               <div key={i} className="flex gap-12 group">
-                <div className="text-6xl font-display font-bold text-brand-plum/10 transition-colors group-hover:text-brand-gold">
+                <div className="text-6xl font-display font-bold text-brand-plum/30 transition-colors group-hover:text-brand-gold">
                   0{i + 1}
                 </div>
                 <div className="pt-4">
-                  <p className="text-2xl text-brand-plum/70 leading-relaxed italic group-hover:text-brand-dark transition-colors">{highlight}</p>
+                  <p className="text-xl md:text-2xl text-brand-plum/90 leading-relaxed italic group-hover:text-brand-dark transition-colors">{highlight}</p>
                 </div>
               </div>
             ))}
@@ -89,15 +89,15 @@ export default async function AboutPage() {
       </section>
 
       {/* Connect */}
-      <section className="py-56 bg-white px-4 lg:px-8">
+      <section className="py-32 bg-white px-4 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-brand-dark text-white p-16 lg:p-32 relative overflow-hidden group rounded-[2.5rem] lg:rounded-[4rem] shadow-bold border border-white/5">
+          <div className="bg-brand-dark text-white p-12 lg:p-24 relative overflow-hidden group rounded-[2.5rem] lg:rounded-[4rem] shadow-bold border border-white/5">
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-plum opacity-30 -m-64 rounded-full blur-3xl transition-opacity group-hover:opacity-50" />
             <div className="relative z-10 max-w-3xl text-brand-neutral">
-              <h2 className="text-5xl lg:text-7xl mb-12 tracking-tight text-white">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight text-white">
                 {about.connectSection.headline}
               </h2>
-              <p className="text-2xl text-brand-neutral/40 mb-20 leading-relaxed italic border-l-2 border-brand-gold/50 pl-10">
+              <p className="text-xl md:text-2xl text-brand-neutral/70 mb-12 leading-relaxed italic border-l-2 border-brand-gold/50 pl-10">
                 {about.connectSection.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-8">

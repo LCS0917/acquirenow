@@ -53,56 +53,56 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <article className="bg-white min-h-screen">
       {/* Header */}
-      <header className="pt-40 pb-32 bg-brand-neutral/20 border-b border-brand-neutral relative overflow-hidden">
+      <header className="pt-24 pb-20 bg-brand-neutral/20 border-b border-brand-neutral relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white skew-x-[-12deg] translate-x-20" />
         <div className="max-w-4xl mx-auto px-6 lg:px-12 relative z-10">
-          <Link href="/insights" className="text-xs font-bold uppercase tracking-[0.4em] text-brand-plum/60 hover:text-brand-plum transition-colors flex items-center gap-3 mb-20 group">
+          <Link href="/insights" className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/80 hover:text-brand-plum transition-colors flex items-center gap-3 mb-12 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             {insightsPage.backToInsightsCta}
           </Link>
           
-          <div className="flex items-center gap-8 mb-12">
-            <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.4em] text-brand-plum/40">
+          <div className="flex items-center gap-8 mb-8">
+            <div className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70">
               <Calendar className="w-4 h-4 text-brand-gold" />
               {post.publishedAt}
             </div>
             <div className="h-px w-12 bg-brand-neutral" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-plum/40 italic">5 min read</span>
+            <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70 italic">5 min read</span>
           </div>
           
-          <h1 className="text-5xl lg:text-7xl mb-12 leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl mb-12 leading-tight">
             {post.title}
           </h1>
           
-          <p className="text-2xl text-gray-500 leading-relaxed italic border-l-4 border-brand-gold pl-12 max-w-3xl">
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic border-l-4 border-brand-gold pl-12 max-w-3xl">
             {post.description}
           </p>
         </div>
       </header>
 
       {/* Content */}
-      <div className="py-40">
+      <div className="py-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-12">
           <div 
-            className="prose prose-xl max-w-none 
+            className="prose prose-lg md:prose-xl max-w-none 
               prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight 
-              prose-p:text-xl prose-p:leading-relaxed prose-p:text-gray-700 prose-p:italic
-              prose-blockquote:border-brand-gold prose-blockquote:bg-brand-neutral/20 prose-blockquote:p-12 prose-blockquote:not-italic prose-blockquote:text-3xl prose-blockquote:font-display prose-blockquote:font-bold prose-blockquote:text-brand-dark
+              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-gray-800 prose-p:italic
+              prose-blockquote:border-brand-gold prose-blockquote:bg-brand-neutral/20 prose-blockquote:p-8 md:p-12 prose-blockquote:not-italic prose-blockquote:text-2xl md:text-3xl prose-blockquote:font-display prose-blockquote:font-bold prose-blockquote:text-brand-dark
               prose-strong:text-brand-plum prose-strong:font-bold
               prose-a:text-brand-plum prose-a:font-bold prose-a:no-underline hover:prose-a:text-brand-dark transition-colors border-b-2 border-brand-gold/30 hover:border-brand-gold"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           
-          <div className="mt-40 pt-20 border-t border-brand-neutral flex flex-col items-center text-center">
-             <div className="relative h-16 w-40 mb-10 transition-transform hover:scale-105">
+          <div className="mt-24 pt-16 border-t border-brand-neutral flex flex-col items-center text-center">
+             <div className="relative h-16 w-40 mb-8 transition-transform hover:scale-105">
                 <img 
                   src="/assets/logo-color.png" 
                   alt="AcquireNow" 
                   className="h-full w-auto object-contain"
                 />
              </div>
-            <h3 className="text-3xl mb-6">Lena Shaw</h3>
-            <p className="text-xl text-gray-500 max-w-md mb-12 italic leading-relaxed">
+            <h3 className="text-3xl mb-4">Lena Shaw</h3>
+            <p className="text-xl text-gray-700 max-w-md mb-8 italic leading-relaxed">
               Healthcare operator specialized in product strategy, go-to-market execution, and value-based care delivery.
             </p>
             <Link href="/about" className="brand-button-primary bg-brand-plum hover:bg-brand-dark">
