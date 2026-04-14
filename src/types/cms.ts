@@ -1,0 +1,317 @@
+export type BlogStatus = 'idea' | 'draft' | 'published';
+
+export interface CmsPage {
+  page_key: string;
+  section_key: string;
+  content: Record<string, any>;
+  updated_at: string;
+}
+
+export interface CmsField {
+  key: string;
+  label: string;
+  type: 'text' | 'textarea' | 'url';
+  placeholder?: string;
+}
+
+export interface CmsSectionDefinition {
+  section_key: string;
+  label: string;
+  group?: string;
+  fields: CmsField[];
+}
+
+export interface CmsPageDefinition {
+  page_key: string;
+  label: string;
+  sections: CmsSectionDefinition[];
+}
+
+export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
+  {
+    page_key: 'homepage',
+    label: 'Homepage',
+    sections: [
+      {
+        section_key: 'hero',
+        label: 'Hero Section',
+        group: 'Hero',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'textarea' },
+          { key: 'subtext', label: 'Subtext', type: 'textarea' },
+          { key: 'cta', label: 'Call to Action', type: 'text' },
+        ]
+      },
+      {
+        section_key: 'valueProp1',
+        label: 'Value Prop 1',
+        group: 'Value Propositions',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'valueProp2',
+        label: 'Value Prop 2',
+        group: 'Value Propositions',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'valueProp3',
+        label: 'Value Prop 3',
+        group: 'Value Propositions',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'howItWorksHeadline',
+        label: 'Header & Intro',
+        group: 'How It Works',
+        fields: [
+          { key: 'howItWorksHeadline', label: 'Headline', type: 'text' },
+          { key: 'subtext', label: 'Subtext Label', type: 'text' },
+        ]
+      },
+      {
+        section_key: 'howItWorksStep1',
+        label: 'Step 1',
+        group: 'How It Works',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'howItWorksStep2',
+        label: 'Step 2',
+        group: 'How It Works',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'howItWorksStep3',
+        label: 'Step 3',
+        group: 'How It Works',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'vbcIndexSection',
+        label: 'VBC Index Preview',
+        group: 'Product Features',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'cta', label: 'Button Label', type: 'text' },
+        ]
+      },
+      {
+        section_key: 'featuredInsightSection',
+        label: 'Insights Section',
+        group: 'Product Features',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'description', label: 'Section Intro', type: 'textarea' },
+          { key: 'viewAllCta', label: 'View All Text', type: 'text' },
+          { key: 'readArticleCta', label: 'Read Article Text', type: 'text' },
+        ]
+      },
+      {
+        section_key: 'workPreviewHeadline',
+        label: 'Work Preview Header',
+        group: 'Work Preview',
+        fields: [
+          { key: 'workPreviewHeadline', label: 'Headline', type: 'text' },
+          { key: 'workPreviewCta', label: 'All Cases Label', type: 'text' },
+          { key: 'caseStudyLabel', label: 'Case Study Link Label', type: 'text' },
+        ]
+      }
+    ]
+  },
+  {
+    page_key: 'workPage',
+    label: 'Work Page',
+    sections: [
+      {
+        section_key: 'header',
+        label: 'Page Header',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'text' },
+        ]
+      },
+      {
+        section_key: 'labels',
+        label: 'Labels',
+        fields: [
+          { key: 'problem', label: 'Problem Label', type: 'text' },
+          { key: 'approach', label: 'Approach Label', type: 'text' },
+          { key: 'outcome', label: 'Outcome Label', type: 'text' },
+        ]
+      }
+    ]
+  },
+  {
+    page_key: 'vbcIndexPage',
+    label: 'VBC Index Page',
+    sections: [
+      {
+        section_key: 'content',
+        label: 'Main Content',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'intro', label: 'Introduction', type: 'textarea' },
+          { key: 'problem', label: 'The Problem', type: 'textarea' },
+          { key: 'approach', label: 'Our Approach', type: 'textarea' },
+          { key: 'whyItMatters', label: 'Why It Matters', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'labels',
+        label: 'Labels',
+        fields: [
+          { key: 'problem', label: 'Problem Label', type: 'text' },
+          { key: 'approach', label: 'Approach Label', type: 'text' },
+          { key: 'whyItMatters', label: 'Why It Matters Label', type: 'text' },
+        ]
+      }
+    ]
+  },
+  {
+    page_key: 'about',
+    label: 'About Page',
+    sections: [
+      {
+        section_key: 'bio',
+        label: 'Biography',
+        fields: [
+          { key: 'headline', label: 'Page Title', type: 'text' },
+          { key: 'summary', label: 'Professional Summary', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'connectSection',
+        label: 'Connect Section',
+        fields: [
+          { key: 'headline', label: 'CTA Headline', type: 'text' },
+          { key: 'description', label: 'CTA Subtext', type: 'textarea' },
+          { key: 'cta', label: 'Button Text', type: 'text' },
+        ]
+      }
+    ]
+  },
+  {
+    page_key: 'insightsPage',
+    label: 'Insights Page',
+    sections: [
+      {
+        section_key: 'content',
+        label: 'Page Content',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'readMoreCta', label: 'Read More Label', type: 'text' },
+          { key: 'backToInsightsCta', label: 'Back Link Label', type: 'text' },
+        ]
+      }
+    ]
+  }
+];
+
+export interface CMSData {
+  homepage: {
+    hero: {
+      headline: string;
+      subtext: string;
+      cta: string;
+    };
+    valueProps: Array<{
+      title: string;
+      description: string;
+    }>;
+    howItWorksHeadline: string;
+    howItWorksSubtext: string;
+    howItWorks: Array<{
+      step: string;
+      title: string;
+      description: string;
+    }>;
+    workPreviewHeadline: string;
+    workPreviewAllCasesLabel: string;
+    workPreviewCaseStudyLabel: string;
+    workPreview: Array<{
+      id: string;
+      title: string;
+      company: string;
+      description: string;
+      slug: string;
+    }>;
+    vbcIndexSection: {
+      headline: string;
+      description: string;
+      cta: string;
+    };
+    featuredInsightSection: {
+      headline: string;
+      description: string;
+      viewAllCta: string;
+      readArticleCta: string;
+    };
+    insightsPreview: {
+      headline: string;
+    };
+  };
+  workPage: {
+    headline: string;
+    labels: {
+      problem: string;
+      approach: string;
+      outcome: string;
+    };
+    entries: Array<{
+      id: string;
+      title: string;
+      company: string;
+      problem: string;
+      approach: string;
+      outcome: string;
+      slug: string;
+    }>;
+  };
+  vbcIndexPage: {
+    headline: string;
+    intro: string;
+    labels: {
+      problem: string;
+      approach: string;
+      whyItMatters: string;
+    };
+    problem: string;
+    approach: string;
+    whyItMatters: string;
+  };
+  aboutPage: {
+    headline: string;
+    summary: string;
+    highlightsHeadline: string;
+    highlights: string[];
+    connectSection: {
+      headline: string;
+      description: string;
+      cta: string;
+    };
+  };
+  insightsPage: {
+    headline: string;
+    readMoreCta: string;
+    backToInsightsCta: string;
+  };
+}

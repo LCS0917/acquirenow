@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  /* OKLCH palette for authoritative precision */
+  --color-brand-dark: oklch(20% 0.04 301); 
+  --color-brand-plum: oklch(32% 0.12 301);
+  --color-brand-pink: oklch(76% 0.11 354);
+  --color-brand-gold: oklch(88% 0.14 88);
+  --color-brand-lilac: oklch(82% 0.14 301);
+  --color-brand-neutral: oklch(96% 0.01 301);
+  
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui;
+  --font-display: var(--font-avenir), var(--font-open-sans), ui-sans-serif;
+
+  /* Standardized intentional radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  --shadow-subtle: 0 2px 4px oklch(0% 0 0 / 0.02), 0 1px 2px oklch(0% 0 0 / 0.04);
+  --shadow-bold: 0 20px 25px -5px oklch(32% 0.12 301 / 0.05), 0 8px 10px -6px oklch(32% 0.12 301 / 0.05);
+}
+
+:root {
+  --background: oklch(100% 0 0);
+  --foreground: var(--color-brand-dark);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-open-sans), ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typographic Scale - Clear & Precise */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.brand-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--color-brand-dark);
+  color: white;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 6px -1px oklch(0% 0 0 / 0.1), 0 2px 4px -2px oklch(0% 0 0 / 0.1);
+}
+
+.brand-button-primary:hover {
+  background-color: var(--color-brand-plum);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-bold);
+}
+
+.brand-button-inverted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  background-color: white;
+  color: var(--color-brand-plum);
+  border: 1px solid white;
+  box-shadow: 0 4px 6px -1px oklch(0% 0 0 / 0.1);
+}
+
+.brand-button-inverted:hover {
+  background-color: var(--color-brand-gold);
+  color: var(--color-brand-dark);
+  border-color: var(--color-brand-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-bold);
+}
+
+.brand-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid var(--color-brand-plum);
+  color: var(--color-brand-plum);
+}
+
+.brand-button-secondary:hover {
+  background-color: var(--color-brand-neutral);
+  transform: translateY(-1px);
+}
+
+.brand-card {
+  background-color: white;
+  border: 1px solid oklch(var(--color-brand-plum) / 0.08);
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.brand-card:hover {
+  border-color: var(--color-brand-plum);
+  box-shadow: var(--shadow-bold);
+  transform: translateY(-2px);
+}
+
+.subtle-shadow {
+  box-shadow: var(--shadow-subtle);
+}
