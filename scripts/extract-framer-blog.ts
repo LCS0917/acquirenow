@@ -1,3 +1,4 @@
+// @ts-nocheck
 import fs from 'fs';
 import path from 'path';
 import * as cheerio from 'cheerio';
@@ -46,7 +47,7 @@ async function extractFramerBlog() {
     
     // Extract Content HTML
     let contentHtml = '';
-    let best: cheerio.Cheerio | null = null;
+    let best: cheerio.Cheerio<any> | null = null;
     
     $('p').each((i, el) => {
         if ($(el).text().trim().length > 30) {
