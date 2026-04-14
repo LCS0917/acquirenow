@@ -1,5 +1,4 @@
-import { supabaseAdmin } from './src/lib/supabase-admin.ts'
-
+import { supabaseAdmin } from './src/lib/supabase-admin
 async function checkSchema() {
   const { data, error } = await supabaseAdmin
     .from('blog_posts')
