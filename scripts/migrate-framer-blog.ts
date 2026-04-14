@@ -3,13 +3,15 @@ import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 
 // Load .env.local
+import dotenv from 'dotenv'; // Add this at the top with other imports
+
+// Replace the old require block with this:
 const envPath = path.resolve(process.cwd(), '.env.local');
 if (fs.existsSync(envPath)) {
-  require('dotenv').config({ path: envPath });
+  dotenv.config({ path: envPath });
 } else {
-  require('dotenv').config(); // fallback to .env
+  dotenv.config(); 
 }
-
 // Requires standard Supabase environment variables:
 // NEXT_PUBLIC_SUPABASE_URL
 // SUPABASE_SERVICE_ROLE_KEY
@@ -77,7 +79,6 @@ async function migrateToSupabase() {
           slug: post.slug,
           content: post.content_html, // Assuming the new CMS handles raw HTML for migration, or update column name if different
           description: post.excerpt, // Mapped excerpt to description based on BlogPost schema
-          featured_image_url: post.featured_image_url,
           status: 'draft',
           is_featured: false,
           published_at: publishedAt,
