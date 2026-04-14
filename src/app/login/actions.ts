@@ -6,8 +6,9 @@ import { redirect } from 'next/navigation'
 
 export async function login(formData: FormData) {
   const supabase = await createClient()
-  const origin = (await headers()).get('origin') || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  const email = formData.get('email') as string
+// Use this line for now since the custom domain isn't live yet:
+const origin = 'https://acquirenow.vercel.app'
+const email = formData.get('email') as string
 
   const { error } = await supabase.auth.signInWithOtp({
     email,
