@@ -26,10 +26,12 @@ export default async function AdminLayout({
     return redirect('/login')
   }
 
-  const navLinks = [
-    { href: '/admin/cms', label: 'CMS', icon: Settings },
-    { href: '/admin/blog', label: 'Editorial', icon: FileText },
-  ]
+ // Replace your old navLinks with this:
+const navLinks = [
+  { href: '/admin', label: 'Dashboard', icon: LayoutDashboard }, 
+  { href: '/admin/cms', label: 'CMS', icon: Settings },
+  { href: '/admin/blog', label: 'Editorial', icon: FileText },
+]
 
   return (
     <div className="flex min-h-screen bg-brand-neutral/30 font-sans text-brand-dark">

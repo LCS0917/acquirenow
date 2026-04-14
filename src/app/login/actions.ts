@@ -13,7 +13,7 @@ const email = formData.get('email') as string
   const { error } = await supabase.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: `${origin}/auth/callback`,
+      emailRedirectTo: `${origin}/auth/callback?next=/admin`,
     },
   })
 
