@@ -1,20 +1,17 @@
 'use server'
 
 import { createClient } from '@/utils/supabase/server'
-import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export async function login(formData: FormData) {
   const supabase = await createClient()
-// Use this line for now since the custom domain isn't live yet:
-const origin = 'https://acquirenow.vercel.app'
-const email = formData.get('email') as string
 
-  const { error } = await supabase.auth.signInWithOtp({
+  const email = formData.get('email') as string
+  const password = formData.get('password') as string // Get the password from the form
+
+  const { error } = await supabase.auth.signInWithPassword({
     email,
-    options: {
-      emailRedirectTo: `${origin}/auth/callback?next=/admin`,
-    },
+    password,
   })
 
   if (error) {
@@ -22,5 +19,6 @@ const email = formData.get('email') as string
     return redirect(`/login?message=${encodeURIComponent(error.message)}`)
   }
 
-  return redirect('/login?message=Check your email for the login link')
+  // Once logged in, go straight to the Dashboard
+  return redirect('/admin')
 }
