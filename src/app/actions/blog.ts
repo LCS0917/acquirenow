@@ -113,11 +113,18 @@ export async function getBlogPostById(id: string) {
 }
 
 export async function createBlankBlogPost() {
+  // Use a timestamped title so the auto-generated slug never collides with
+  // an existing draft named "Untitled Draft".
+  const stamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 14)
+  const title = `Untitled Draft ${stamp}`
   const { data, error } = await supabaseAdmin
     .from('blog_posts')
     .insert({
-      draft_title: 'Untitled Draft',
+      title,
+      draft_title: title,
+      content: '',
       draft_body: '',
+      slug: `untitled-draft-${stamp}`,
       status: 'draft',
       target_audience: 'All'
     })
@@ -126,7 +133,7 @@ export async function createBlankBlogPost() {
 
   if (error || !data) {
     console.error('Error creating blank blog post:', error)
-    throw new Error('Failed to create blank post')
+    throw new Error(error?.message || 'Failed to create blank post')
   }
   
   revalidatePath('/admin/blog')

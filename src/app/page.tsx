@@ -41,6 +41,7 @@ export default async function Home() {
       valuePropsViewAllCta: cmsContent.valuePropsCta?.viewAllCta || localCmsData.homepage.valuePropsViewAllCta,
       vbcIndexSection: merge(localCmsData.homepage.vbcIndexSection, cmsContent.vbcIndexSection),
       featuredInsightSection: merge(localCmsData.homepage.featuredInsightSection, cmsContent.featuredInsightSection),
+      testimonial: merge(localCmsData.homepage.testimonial, cmsContent.testimonial),
     }
   };
 

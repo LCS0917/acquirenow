@@ -67,7 +67,8 @@ export default function AdminBlogPage() {
       const newPost = await createBlankBlogPost();
       router.push(`/admin/blog/${newPost.id}`);
     } catch (error) {
-      alert("Failed to create blog post");
+      const msg = error instanceof Error ? error.message : String(error);
+      alert(`Failed to create blog post: ${msg}`);
     }
   };
 
