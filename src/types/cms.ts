@@ -37,9 +37,9 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Hero Section',
         group: 'Hero',
         fields: [
-          { key: 'headline', label: 'Headline', type: 'textarea' },
-          { key: 'subtext', label: 'Subtext', type: 'textarea' },
-          { key: 'cta', label: 'Call to Action', type: 'text' },
+          { key: 'headline', label: 'Hero Headline', type: 'textarea' },
+          { key: 'subhead', label: 'Hero Subhead', type: 'textarea' },
+          { key: 'cta', label: 'Call to Action Label', type: 'text' },
         ]
       },
       {
@@ -47,9 +47,9 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Value Prop 1',
         group: 'Value Propositions',
         fields: [
-          { key: 'stat', label: 'Stat (e.g. 10X)', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
-          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'data', label: 'Data (e.g. 10X)', type: 'text' },
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'caption', label: 'Caption', type: 'textarea' },
         ]
       },
       {
@@ -57,9 +57,9 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Value Prop 2',
         group: 'Value Propositions',
         fields: [
-          { key: 'stat', label: 'Stat (e.g. $30M+)', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
-          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'data', label: 'Data (e.g. $30M+)', type: 'text' },
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'caption', label: 'Caption', type: 'textarea' },
         ]
       },
       {
@@ -67,45 +67,17 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Value Prop 3',
         group: 'Value Propositions',
         fields: [
-          { key: 'stat', label: 'Stat (e.g. 13+ years)', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
-          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'data', label: 'Data (e.g. 13+ years)', type: 'text' },
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'caption', label: 'Caption', type: 'textarea' },
         ]
       },
       {
-        section_key: 'howItWorksHeadline',
-        label: 'Header & Intro',
-        group: 'How It Works',
+        section_key: 'valuePropsCta',
+        label: 'Value Props CTA',
+        group: 'Value Propositions',
         fields: [
-          { key: 'howItWorksHeadline', label: 'Headline', type: 'text' },
-          { key: 'subtext', label: 'Subtext Label', type: 'text' },
-        ]
-      },
-      {
-        section_key: 'howItWorksStep1',
-        label: 'Step 1',
-        group: 'How It Works',
-        fields: [
-          { key: 'title', label: 'Title', type: 'text' },
-          { key: 'description', label: 'Description', type: 'textarea' },
-        ]
-      },
-      {
-        section_key: 'howItWorksStep2',
-        label: 'Step 2',
-        group: 'How It Works',
-        fields: [
-          { key: 'title', label: 'Title', type: 'text' },
-          { key: 'description', label: 'Description', type: 'textarea' },
-        ]
-      },
-      {
-        section_key: 'howItWorksStep3',
-        label: 'Step 3',
-        group: 'How It Works',
-        fields: [
-          { key: 'title', label: 'Title', type: 'text' },
-          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'viewAllCta', label: 'View All Work Label', type: 'text' },
         ]
       },
       {
@@ -113,6 +85,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'VBC Index Preview',
         group: 'Product Features',
         fields: [
+          { key: 'badge', label: 'Badge', type: 'text' },
           { key: 'headline', label: 'Headline', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
           { key: 'cta', label: 'Button Label', type: 'text' },
@@ -124,19 +97,9 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         group: 'Product Features',
         fields: [
           { key: 'headline', label: 'Headline', type: 'text' },
-          { key: 'description', label: 'Section Intro', type: 'textarea' },
+          { key: 'description', label: 'Description', type: 'textarea' },
           { key: 'viewAllCta', label: 'View All Text', type: 'text' },
           { key: 'readArticleCta', label: 'Read Article Text', type: 'text' },
-        ]
-      },
-      {
-        section_key: 'workPreviewHeadline',
-        label: 'Work Preview Header',
-        group: 'Work Preview',
-        fields: [
-          { key: 'workPreviewHeadline', label: 'Headline', type: 'text' },
-          { key: 'workPreviewCta', label: 'All Cases Label', type: 'text' },
-          { key: 'caseStudyLabel', label: 'Case Study Link Label', type: 'text' },
         ]
       },
       {
@@ -156,13 +119,43 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
       {
         section_key: 'header',
         label: 'Page Header',
+        group: 'Header',
         fields: [
           { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'howItWorksStep1',
+        label: 'Step 1',
+        group: 'Process',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'howItWorksStep2',
+        label: 'Step 2',
+        group: 'Process',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'howItWorksStep3',
+        label: 'Step 3',
+        group: 'Process',
+        fields: [
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
         ]
       },
       {
         section_key: 'labels',
-        label: 'Labels',
+        label: 'Case Study Labels',
+        group: 'Metadata',
         fields: [
           { key: 'problem', label: 'Problem Label', type: 'text' },
           { key: 'approach', label: 'Approach Label', type: 'text' },
@@ -177,20 +170,21 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
     sections: [
       {
         section_key: 'content',
-        label: 'Main Header',
+        label: 'Hero & Intro',
+        group: 'Header',
         fields: [
+          { key: 'badge', label: 'Badge', type: 'text' },
           { key: 'headline', label: 'Hero Headline', type: 'text' },
           { key: 'intro', label: 'Hero Introduction', type: 'textarea' },
           { key: 'ctaTop', label: 'Top Button Text', type: 'text' },
-          { key: 'subHeadline', label: 'Sub-Hero Headline', type: 'text' },
-          { key: 'subHeadlineDescription', label: 'Sub-Hero Description', type: 'textarea' },
+          { key: 'bottomCtaHeadline', label: 'Bottom Headline', type: 'text' },
           { key: 'ctaBottom', label: 'Bottom Button Text', type: 'text' },
         ]
       },
       {
         section_key: 'section1',
-        label: 'Intelligence & Friction',
-        group: 'Core Value 1',
+        label: 'Section 1',
+        group: 'Features',
         fields: [
           { key: 'headline', label: 'Headline', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
@@ -206,8 +200,8 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
       },
       {
         section_key: 'section2',
-        label: 'The Mini-Product Era',
-        group: 'Core Value 2',
+        label: 'Section 2',
+        group: 'Features',
         fields: [
           { key: 'headline', label: 'Headline', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
@@ -230,18 +224,33 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
       {
         section_key: 'bio',
         label: 'Biography',
+        group: 'Header',
         fields: [
           { key: 'headline', label: 'Page Title', type: 'text' },
           { key: 'summary', label: 'Professional Summary', type: 'textarea' },
         ]
       },
       {
+        section_key: 'highlights',
+        label: 'Experience Highlights',
+        group: 'Experience',
+        fields: [
+          { key: 'headline', label: 'Section Headline', type: 'text' },
+          { key: 'h1', label: 'Highlight 1', type: 'textarea' },
+          { key: 'h2', label: 'Highlight 2', type: 'textarea' },
+          { key: 'h3', label: 'Highlight 3', type: 'textarea' },
+          { key: 'h4', label: 'Highlight 4', type: 'textarea' },
+        ]
+      },
+      {
         section_key: 'connectSection',
         label: 'Connect Section',
+        group: 'Footer',
         fields: [
           { key: 'headline', label: 'CTA Headline', type: 'text' },
-          { key: 'description', label: 'CTA Subtext', type: 'textarea' },
+          { key: 'description', label: 'CTA Description', type: 'textarea' },
           { key: 'cta', label: 'Button Text', type: 'text' },
+          { key: 'linkedinUrl', label: 'LinkedIn URL', type: 'url' },
         ]
       }
     ]
@@ -253,8 +262,11 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
       {
         section_key: 'content',
         label: 'Page Content',
+        group: 'Main',
         fields: [
           { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'description', label: 'Sub-headline', type: 'textarea' },
+          { key: 'brandingText', label: 'Branding Text', type: 'text' },
           { key: 'readMoreCta', label: 'Read More Label', type: 'text' },
           { key: 'backToInsightsCta', label: 'Back Link Label', type: 'text' },
         ]
@@ -267,32 +279,17 @@ export interface CMSData {
   homepage: {
     hero: {
       headline: string;
-      subtext: string;
+      subhead: string;
       cta: string;
     };
     valueProps: Array<{
-      stat: string;
-      title: string;
-      description: string;
+      data: string;
+      headline: string;
+      caption: string;
     }>;
-    howItWorksHeadline: string;
-    howItWorksSubtext: string;
-    howItWorks: Array<{
-      step: string;
-      title: string;
-      description: string;
-    }>;
-    workPreviewHeadline: string;
-    workPreviewAllCasesLabel: string;
-    workPreviewCaseStudyLabel: string;
-    workPreview: Array<{
-      id: string;
-      title: string;
-      company: string;
-      description: string;
-      slug: string;
-    }>;
+    valuePropsViewAllCta: string;
     vbcIndexSection: {
+      badge: string;
       headline: string;
       description: string;
       cta: string;
@@ -303,15 +300,17 @@ export interface CMSData {
       viewAllCta: string;
       readArticleCta: string;
     };
-    insightsPreview: {
-      headline: string;
-    };
     testimonial: {
       quote: string;
     };
   };
   workPage: {
     headline: string;
+    description: string;
+    howItWorks: Array<{
+      title: string;
+      description: string;
+    }>;
     labels: {
       problem: string;
       approach: string;
@@ -328,11 +327,11 @@ export interface CMSData {
     }>;
   };
   vbcIndexPage: {
+    badge: string;
     headline: string;
     intro: string;
     ctaTop: string;
-    subHeadline: string;
-    subHeadlineDescription: string;
+    bottomCtaHeadline: string;
     ctaBottom: string;
     section1: {
       headline: string;
@@ -354,10 +353,13 @@ export interface CMSData {
       headline: string;
       description: string;
       cta: string;
+      linkedinUrl: string;
     };
   };
   insightsPage: {
     headline: string;
+    description: string;
+    brandingText: string;
     readMoreCta: string;
     backToInsightsCta: string;
   };

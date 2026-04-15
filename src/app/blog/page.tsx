@@ -35,7 +35,13 @@ export default async function InsightsPage() {
     return result;
   };
 
-  const insightsPage = merge(localInsightsPage, cmsContent.content);
+  const insightsPage = {
+    ...localInsightsPage,
+    headline: cmsContent.content?.headline || localInsightsPage.headline,
+    description: cmsContent.content?.description || localInsightsPage.description,
+    brandingText: cmsContent.content?.brandingText || localInsightsPage.brandingText,
+    readMoreCta: cmsContent.content?.readMoreCta || localInsightsPage.readMoreCta,
+  };
 
   return (
     <div className="bg-white min-h-screen">
@@ -49,13 +55,15 @@ export default async function InsightsPage() {
                 {insightsPage.headline}
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic border-l-4 border-brand-gold pl-12">
-                Observations on healthcare product strategy, operational leverage, and the transition to value.
+                {insightsPage.description}
               </p>
             </div>
             <div className="hidden lg:block pb-4">
                <div className="flex flex-col items-end gap-2">
                   <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-brand-plum/70">AcquireNow</span>
-                  <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-brand-plum/70">Insights Dept.</span>
+                  <span className="text-[12px] font-bold uppercase tracking-[0.5em] text-brand-plum/70">
+                    {insightsPage.brandingText}
+                  </span>
                </div>
             </div>
           </div>

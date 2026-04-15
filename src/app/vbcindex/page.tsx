@@ -78,7 +78,9 @@ export default async function VBCIndexPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7 animate-in fade-in slide-in-from-left-8 duration-1000 ease-out-expo">
               <div className="flex items-center gap-4 mb-8">
-                <span className="px-4 py-1.5 bg-brand-plum/5 text-brand-plum text-[12px] font-bold uppercase tracking-[0.3em] rounded-full border border-brand-plum/10">Product Spotlight</span>
+                <span className="px-4 py-1.5 bg-brand-plum/5 text-brand-plum text-[12px] font-bold uppercase tracking-[0.3em] rounded-full border border-brand-plum/10">
+                  {content.badge}
+                </span>
                 <div className="h-px w-12 bg-brand-plum/20" />
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight">
@@ -180,7 +182,7 @@ export default async function VBCIndexPage() {
         <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-plum opacity-20 skew-x-[-12deg] translate-x-20" />
         <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold mb-10 tracking-tight italic font-display">
-            Ready to act on the right opportunities?
+            {content.bottomCtaHeadline}
           </h2>
           <Link href="mailto:lena@acquirenow.com" className="brand-button-inverted px-12 py-5 text-lg group">
             {content.ctaBottom}

@@ -42,11 +42,6 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="max-w-4xl animate-in fade-in slide-in-from-bottom-8 duration-1000 ease-out-expo">
-            <div className="inline-flex items-center gap-3 mb-8">
-              <span className="w-12 h-px bg-brand-gold" />
-              <span className="text-[13px] font-bold uppercase tracking-[0.4em] text-brand-plum">{homepage.hero.badge}</span>
-            </div>
-            
             <h1 className="text-4xl md:text-6xl lg:text-[5.5rem] mb-8 tracking-tight leading-[1.05]">
               {homepage.hero.headline}
             </h1>
@@ -59,7 +54,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
                 </Link>
               </div>
               <p className="text-xl text-brand-plum/90 max-w-md leading-relaxed italic border-l-2 border-brand-gold pl-10 pt-2">
-                {homepage.hero.subtext}
+                {homepage.hero.subhead}
               </p>
             </div>
           </div>
@@ -72,7 +67,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
              style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='1' height='1' fill='%23fff'/%3E%3C/svg%3E")` }} />
         
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {homepage.valueProps.map((prop, i) => (
               <div 
                 key={i} 
@@ -80,20 +75,21 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
                 style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'both' }}
               >
                 <div className="text-5xl lg:text-6xl font-bold text-brand-gold mb-6 font-display transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1 origin-left">
-                  {prop.stat}
+                  {prop.data}
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
-                  {prop.title}
+                  {prop.headline}
                 </h3>
                 <p className="text-brand-neutral/80 leading-relaxed text-lg italic flex-grow">
-                  {prop.description}
+                  {prop.caption}
                 </p>
               </div>
             ))}
           </div>
-          <div className="flex justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 ease-out-expo delay-500 fill-both">
+
+          <div className="mt-20 flex justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 ease-out-expo delay-500 fill-both">
             <Link href="/work" className="brand-button-inverted px-12 py-5 group">
-              View All Work
+              {homepage.valuePropsViewAllCta}
               <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -108,7 +104,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <div className="lg:col-span-7 relative z-10">
                 <div className="inline-flex items-center gap-4 mb-8">
-                  <span className="px-3 py-1 bg-brand-dark text-white text-[12px] font-bold uppercase tracking-[0.3em] rounded-sm">New Product</span>
+                  <span className="px-3 py-1 bg-brand-dark text-white text-[12px] font-bold uppercase tracking-[0.3em] rounded-sm">{homepage.vbcIndexSection.badge}</span>
                   <div className="h-px w-12 bg-brand-dark/20" />
                 </div>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl mb-8 font-display text-brand-dark leading-tight">

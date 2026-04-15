@@ -23,6 +23,13 @@ export default async function AboutPage() {
     ...localCmsData.aboutPage,
     headline: cmsContent.bio?.headline || localCmsData.aboutPage.headline,
     summary: cmsContent.bio?.summary || localCmsData.aboutPage.summary,
+    highlightsHeadline: cmsContent.highlights?.headline || localCmsData.aboutPage.highlightsHeadline,
+    highlights: [
+      cmsContent.highlights?.h1 || localCmsData.aboutPage.highlights[0],
+      cmsContent.highlights?.h2 || localCmsData.aboutPage.highlights[1],
+      cmsContent.highlights?.h3 || localCmsData.aboutPage.highlights[2],
+      cmsContent.highlights?.h4 || localCmsData.aboutPage.highlights[3],
+    ],
     connectSection: merge(localCmsData.aboutPage.connectSection, cmsContent.connectSection)
   };
 

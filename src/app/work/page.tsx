@@ -21,11 +21,12 @@ export default async function WorkPage() {
   const workPage = {
     ...localCmsData.workPage,
     headline: cmsContent.header?.headline || localCmsData.workPage.headline,
+    description: cmsContent.header?.description || localCmsData.workPage.description,
     labels: merge(localCmsData.workPage.labels, cmsContent.labels)
   };
 
-  const howItWorksSteps = localCmsData.homepage.howItWorks.map((step, i) => 
-    merge(step, homepageCmsContent[`howItWorksStep${i+1}`])
+  const howItWorksSteps = localCmsData.workPage.howItWorks.map((step, i) => 
+    merge(step, cmsContent[`howItWorksStep${i+1}`])
   );
 
   return (
@@ -38,7 +39,7 @@ export default async function WorkPage() {
             {workPage.headline}
           </h1>
           <p className="text-xl md:text-2xl text-brand-plum/80 max-w-3xl leading-relaxed italic border-l-2 border-brand-gold pl-12 animate-in fade-in slide-in-from-left-4 duration-700 delay-150 fill-both">
-            A selection of strategic operations and product initiatives across the healthcare continuum.
+            {workPage.description}
           </p>
         </div>
       </section>

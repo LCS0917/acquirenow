@@ -25,20 +25,22 @@ export default async function Home() {
   const data: any = {
     homepage: {
       ...localCmsData.homepage,
-      hero: merge(localCmsData.homepage.hero, cmsContent.hero),
-      valueProps: localCmsData.homepage.valueProps.map((prop, i) => 
-        merge(prop, cmsContent[`valueProp${i+1}`])
-      ),
-      howItWorksHeadline: cmsContent.howItWorksHeadline?.howItWorksHeadline || localCmsData.homepage.howItWorksHeadline,
-      howItWorksSubtext: cmsContent.howItWorksHeadline?.subtext || localCmsData.homepage.howItWorksSubtext,
-      howItWorks: localCmsData.homepage.howItWorks.map((step, i) => 
-        merge(step, cmsContent[`howItWorksStep${i+1}`])
-      ),
+      hero: {
+        headline: cmsContent.hero?.headline || localCmsData.homepage.hero.headline,
+        subhead: cmsContent.hero?.subhead || localCmsData.homepage.hero.subhead,
+        cta: cmsContent.hero?.cta || localCmsData.homepage.hero.cta,
+      },
+      valueProps: localCmsData.homepage.valueProps.map((prop, i) => {
+        const cmsProp = cmsContent[`valueProp${i+1}`];
+        return {
+          data: cmsProp?.data || prop.data,
+          headline: cmsProp?.headline || prop.headline,
+          caption: cmsProp?.caption || prop.caption,
+        };
+      }),
+      valuePropsViewAllCta: cmsContent.valuePropsCta?.viewAllCta || localCmsData.homepage.valuePropsViewAllCta,
       vbcIndexSection: merge(localCmsData.homepage.vbcIndexSection, cmsContent.vbcIndexSection),
       featuredInsightSection: merge(localCmsData.homepage.featuredInsightSection, cmsContent.featuredInsightSection),
-      workPreviewHeadline: cmsContent.workPreviewHeadline?.workPreviewHeadline || localCmsData.homepage.workPreviewHeadline,
-      workPreviewAllCasesLabel: cmsContent.workPreviewHeadline?.workPreviewCta || localCmsData.homepage.workPreviewAllCasesLabel,
-      workPreviewCaseStudyLabel: cmsContent.workPreviewHeadline?.caseStudyLabel || localCmsData.homepage.workPreviewCaseStudyLabel,
     }
   };
 
