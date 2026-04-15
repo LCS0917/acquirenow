@@ -89,7 +89,7 @@ export default async function VBCIndexPage() {
               <p className="text-2xl md:text-3xl text-brand-plum/80 leading-relaxed max-w-2xl italic border-l-4 border-brand-gold pl-12 mb-12">
                 {content.intro}
               </p>
-              <Link href="mailto:lena@acquirenow.com" className="brand-button-primary group">
+              <Link href="mailto:lena@acquirenowhq.com" className="brand-button-primary group">
                 {content.ctaTop}
                 <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -184,7 +184,7 @@ export default async function VBCIndexPage() {
           <h2 className="text-3xl md:text-4xl font-bold mb-10 tracking-tight italic font-display">
             {content.bottomCtaHeadline}
           </h2>
-          <Link href="mailto:lena@acquirenow.com" className="brand-button-inverted px-12 py-5 text-lg group">
+          <Link href="mailto:lena@acquirenowhq.com" className="brand-button-inverted px-12 py-5 text-lg group">
             {content.ctaBottom}
             <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Link>

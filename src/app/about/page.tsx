@@ -120,14 +120,16 @@ export default async function AboutPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-8">
                 <a
-                  href="mailto:lena@acquirenow.com"
+                  href="mailto:lena@acquirenowhq.com"
                   className="brand-button-inverted shadow-bold"
                 >
                   {about.connectSection.cta}
                   <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/lenacshaw/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-3.5 font-bold text-sm uppercase tracking-widest rounded-xl border-2 border-white text-white hover:bg-white hover:text-brand-dark transition-all duration-300"
                 >
                   LinkedIn

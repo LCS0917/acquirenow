@@ -68,14 +68,14 @@ export default function RootLayout({
                 <div>
                   <h4 className="text-[12px] uppercase tracking-[0.5em] font-bold mb-8 text-brand-gold">Contact</h4>
                   <ul className="space-y-4 text-[12px] font-bold uppercase tracking-[0.4em]">
-                    <li><a href="mailto:lena@acquirenow.com" className="hover:text-brand-gold transition-colors">Email</a></li>
-                    <li><a href="#" className="hover:text-brand-gold transition-colors">LinkedIn</a></li>
+                    <li><a href="mailto:lena@acquirenowhq.com" className="hover:text-brand-gold transition-colors">Email</a></li>
+                    <li><a href="https://www.linkedin.com/in/lenacshaw/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">LinkedIn</a></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-[12px] uppercase tracking-[0.5em] font-bold text-brand-neutral/60">
-              <span>© {new Date().getFullYear()} Lena Shaw.</span>
+              <span>© {new Date().getFullYear()} AcquireNow.</span>
               <div className="flex gap-12">
                 <Link href="/admin/blog" className="hover:text-brand-gold transition-colors">Admin Dashboard</Link>
               </div>

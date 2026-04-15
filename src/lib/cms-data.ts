@@ -144,7 +144,7 @@ export const cmsData: CMSData = {
       headline: "Let's Connect",
       description: "Always looking for new challenges in healthcare innovation and operations.",
       cta: "Get in Touch",
-      linkedinUrl: "https://linkedin.com/in/lenashaw",
+      linkedinUrl: "https://www.linkedin.com/in/lenacshaw/",
     },
   },
   insightsPage: {

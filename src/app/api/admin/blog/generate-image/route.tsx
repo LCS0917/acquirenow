@@ -17,12 +17,13 @@ export async function POST(req: NextRequest) {
     }
 
     // Brand palette — hex equivalents of the oklch tokens in globals.css
+    //   brand-dark    oklch(20% 0.04 301) ≈ #1C1527
     //   brand-plum    oklch(32% 0.12 301) ≈ #522A6F
     //   brand-neutral oklch(96% 0.01 301) ≈ #F5F2F5
     //   brand-gold    oklch(88% 0.14 88)  ≈ #E8C26A
     const isDark = theme === 'dark'
-    const bgColor = isDark ? '#522A6F' : '#F5F2F5' // dark = brand-plum
-    const textColor = isDark ? '#F5F2F5' : '#522A6F'
+    const bgColor = isDark ? '#1C1527' : '#F5F2F5' // dark = brand-dark
+    const textColor = isDark ? '#F5F2F5' : '#1C1527'
     const accentColor = '#E8C26A' // brand-gold
 
     const cleanTitle = title.trim().replace(/\s+/g, ' ')

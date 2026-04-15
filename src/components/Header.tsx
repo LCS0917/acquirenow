@@ -73,7 +73,7 @@ export default function Header() {
           ))}
           <div className="pt-8 border-t border-brand-neutral">
              <p className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70 mb-4">Contact</p>
-             <a href="mailto:lena@acquirenow.com" className="text-lg text-brand-plum hover:text-brand-dark transition-colors italic">lena@acquirenow.com</a>
+             <a href="mailto:lena@acquirenowhq.com" className="text-lg text-brand-plum hover:text-brand-dark transition-colors italic">lena@acquirenowhq.com</a>
           </div>
         </div>
       </div>
