@@ -81,11 +81,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* Content */}
       <div className="py-24">
-        <div className="max-w-3xl mx-auto px-6 lg:px-12">
+        <div className="max-w-4xl mx-auto px-6 lg:px-12">
           <div 
             className="prose prose-lg md:prose-xl max-w-none 
               prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight 
-              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-brand-plum/90 prose-p:italic
+              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-brand-plum/90
               prose-blockquote:border-brand-gold prose-blockquote:bg-brand-neutral/20 prose-blockquote:p-8 md:p-12 prose-blockquote:not-italic prose-blockquote:text-2xl md:text-3xl prose-blockquote:font-display prose-blockquote:font-bold prose-blockquote:text-brand-dark
               prose-strong:text-brand-plum prose-strong:font-bold
               prose-a:text-brand-plum prose-a:font-bold prose-a:no-underline hover:prose-a:text-brand-dark transition-colors border-b-2 border-brand-gold/30 hover:border-brand-gold"
@@ -101,7 +101,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 />
              </div>
             <h3 className="text-3xl mb-4">Lena Shaw</h3>
-            <p className="text-xl text-brand-plum/70 max-w-md mb-8 italic leading-relaxed">
+            <p className="text-xl text-brand-plum/70 max-w-2xl mb-8 italic leading-relaxed">
               Healthcare operator specialized in product strategy, go-to-market execution, and value-based care delivery.
             </p>
             <Link 
