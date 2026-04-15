@@ -79,13 +79,13 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
                 className="group p-2 flex flex-col h-full animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out-expo"
                 style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'both' }}
               >
-                <div className="text-5xl lg:text-6xl font-bold text-brand-gold mb-6 font-display transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1 origin-left">
+                <div className="text-4xl lg:text-5xl font-bold text-brand-gold mb-6 font-display transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-1 origin-left">
                   {prop.data}
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-white leading-tight">
+                <h3 className="text-xl font-bold mb-4 text-white leading-tight">
                   {prop.headline}
                 </h3>
-                <p className="text-brand-neutral/80 leading-relaxed text-lg italic flex-grow">
+                <p className="text-brand-neutral/80 leading-relaxed text-base italic flex-grow">
                   {prop.caption}
                 </p>
               </div>
@@ -124,7 +124,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
                 </Link>
               </div>
               <div className="lg:col-span-5 relative">
-                <div className="aspect-square bg-brand-dark rounded-xl p-16 flex flex-col justify-between group overflow-hidden shadow-bold border border-white/5">
+                <div className="aspect-square bg-brand-dark rounded-xl p-16 flex flex-col justify-between overflow-hidden shadow-bold border border-white/5">
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-plum/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="flex gap-2">
                     {[1, 2, 3, 4, 5].map((i) => (
@@ -194,14 +194,10 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
           <p className="text-3xl md:text-4xl lg:text-[4rem] mb-16 tracking-tight leading-[1.15] italic font-display animate-in fade-in zoom-in-95 duration-1000">
             "{homepage.testimonial.quote}"
           </p>
-          <div className="flex justify-center items-center gap-10 opacity-50 group">
-            <div className="h-px w-24 bg-white/20 transition-all duration-700 group-hover:w-32 group-hover:bg-brand-gold/40" />
-            <div className="flex gap-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="w-2 h-2 rounded-full bg-brand-gold/60 shadow-sm transition-all duration-500 group-hover:bg-brand-gold group-hover:scale-125" style={{ transitionDelay: `${i * 100}ms` }} />
-              ))}
-            </div>
-            <div className="h-px w-24 bg-white/20 transition-all duration-700 group-hover:w-32 group-hover:bg-brand-gold/40" />
+          <div className="flex justify-center items-center gap-6 opacity-50">
+            <div className="h-px w-16 bg-white/20" />
+            <div className="w-2 h-2 rounded-full bg-brand-gold/60" />
+            <div className="h-px w-16 bg-white/20" />
           </div>
         </div>
       </section>

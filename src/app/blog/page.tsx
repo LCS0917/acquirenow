@@ -54,7 +54,7 @@ export default async function InsightsPage() {
               <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight">
                 {insightsPage.headline}
               </h1>
-              <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic border-l-4 border-brand-gold pl-12">
+              <p className="text-xl md:text-2xl text-brand-plum/80 leading-relaxed italic border-l-4 border-brand-gold pl-12">
                 {insightsPage.description}
               </p>
             </div>
@@ -91,7 +91,7 @@ export default async function InsightsPage() {
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-brand-dark mb-4 group-hover:text-brand-plum transition-colors leading-tight italic">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
-                  <p className="text-gray-800 text-lg md:text-xl leading-relaxed mb-8 line-clamp-3 italic">
+                  <p className="text-brand-plum/80 text-lg md:text-xl leading-relaxed mb-8 line-clamp-3 italic">
                     {post.description}
                   </p>
                   <div className="mt-auto">
@@ -105,7 +105,7 @@ export default async function InsightsPage() {
             </div>
           ) : (
             <div className="text-center py-24 border border-dashed border-brand-neutral">
-              <p className="text-gray-700 text-xl italic">No articles published yet.</p>
+              <p className="text-brand-plum/70 text-xl italic">No articles published yet.</p>
             </div>
           )}
         </div>

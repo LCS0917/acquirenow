@@ -73,7 +73,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {post.title}
           </h1>
           
-          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic border-l-4 border-brand-gold pl-12 max-w-3xl">
+          <p className="text-xl md:text-2xl text-brand-plum/80 leading-relaxed italic border-l-4 border-brand-gold pl-12 max-w-3xl">
             {post.description}
           </p>
         </div>
@@ -85,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div 
             className="prose prose-lg md:prose-xl max-w-none 
               prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight 
-              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-gray-800 prose-p:italic
+              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-brand-plum/90 prose-p:italic
               prose-blockquote:border-brand-gold prose-blockquote:bg-brand-neutral/20 prose-blockquote:p-8 md:p-12 prose-blockquote:not-italic prose-blockquote:text-2xl md:text-3xl prose-blockquote:font-display prose-blockquote:font-bold prose-blockquote:text-brand-dark
               prose-strong:text-brand-plum prose-strong:font-bold
               prose-a:text-brand-plum prose-a:font-bold prose-a:no-underline hover:prose-a:text-brand-dark transition-colors border-b-2 border-brand-gold/30 hover:border-brand-gold"
@@ -95,13 +95,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="mt-24 pt-16 border-t border-brand-neutral flex flex-col items-center text-center">
              <div className="relative h-16 w-40 mb-8 transition-transform hover:scale-105">
                 <img 
-                  src="/assets/logo-color.png" 
+                  src="/assets/logo-black.png"
                   alt="AcquireNow" 
                   className="h-full w-auto object-contain"
                 />
              </div>
             <h3 className="text-3xl mb-4">Lena Shaw</h3>
-            <p className="text-xl text-gray-700 max-w-md mb-8 italic leading-relaxed">
+            <p className="text-xl text-brand-plum/70 max-w-md mb-8 italic leading-relaxed">
               Healthcare operator specialized in product strategy, go-to-market execution, and value-based care delivery.
             </p>
             <Link href="/about" target="_blank" rel="noopener noreferrer" className="brand-button-primary bg-brand-plum hover:bg-brand-dark">

@@ -22,7 +22,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-4 group" onClick={() => setIsOpen(false)}>
           <div className="relative h-8 w-40 transition-transform group-hover:scale-105">
             <Image 
-              src="/assets/logo-color.png" 
+              src="/assets/logo-black.png"
               alt="AcquireNow" 
               fill
               priority

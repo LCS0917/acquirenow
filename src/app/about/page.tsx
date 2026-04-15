@@ -1,6 +1,6 @@
 import { getCmsPage } from "@/app/actions/cms";
 import { cmsData as localCmsData } from "@/lib/cms-data";
-import { ArrowRight, User as UserIcon, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default async function AboutPage() {
@@ -74,7 +74,7 @@ export default async function AboutPage() {
               <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight">
                 {about.headline}
               </h1>
-              <p className="text-xl md:text-2xl text-brand-plum/80 leading-relaxed italic border-l-4 border-brand-gold pl-10 max-w-2xl">
+              <p className="text-lg md:text-xl text-brand-plum/80 leading-relaxed italic border-l-4 border-brand-gold pl-10 max-w-2xl">
                 {about.summary}
               </p>
             </div>

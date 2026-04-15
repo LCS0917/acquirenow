@@ -85,6 +85,11 @@ h3 {
   box-shadow: var(--shadow-bold);
 }
 
+.brand-button-primary:focus-visible {
+  outline: 2px solid var(--color-brand-gold);
+  outline-offset: 2px;
+}
+
 .brand-button-inverted {
   display: inline-flex;
   align-items: center;
@@ -114,6 +119,11 @@ h3 {
   box-shadow: var(--shadow-bold);
 }
 
+.brand-button-inverted:focus-visible {
+  outline: 2px solid var(--color-brand-gold);
+  outline-offset: 2px;
+}
+
 .brand-button-secondary {
   display: inline-flex;
   align-items: center;
@@ -137,6 +147,11 @@ h3 {
 .brand-button-secondary:hover {
   background-color: var(--color-brand-neutral);
   transform: translateY(-1px);
+}
+
+.brand-button-secondary:focus-visible {
+  outline: 2px solid var(--color-brand-plum);
+  outline-offset: 2px;
 }
 
 .brand-card {
