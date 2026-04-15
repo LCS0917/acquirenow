@@ -141,12 +141,6 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
       {/* Featured Insight Section - Tightened top spacing */}
       <section className="pt-10 pb-24 lg:pt-12 bg-brand-neutral/30 border-t border-brand-plum/5 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end gap-12 mb-16 pb-8 border-b border-brand-plum/10">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl leading-tight font-bold tracking-tight font-display animate-in fade-in slide-in-from-left-4 duration-700">
-              {homepage.insightsPreview.headline}
-            </h2>
-          </div>
-          
           <article className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center group">
             <div className="lg:col-span-7">
               <Link href={displayPost ? `/insights/${displayPost.slug}` : "/insights"} className="block overflow-hidden rounded-2xl shadow-bold border border-brand-plum/5 relative aspect-[16/9]">
