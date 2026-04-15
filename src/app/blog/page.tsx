@@ -14,15 +14,10 @@ export default async function InsightsPage() {
     .order('published_at', { ascending: false });
 
   const publishedPosts: BlogPost[] = (data || []).map((post: any) => ({
-    id: post.id,
+    ...post,
     title: post.title || post.draft_title || 'Untitled',
     description: post.description || '',
     content: post.content || post.draft_body || '',
-    slug: post.slug,
-    status: post.status as BlogStatus,
-    is_featured: post.is_featured,
-    publishedAt: post.published_at,
-    createdAt: post.created_at,
   }));
     
   const { insightsPage: localInsightsPage } = cmsData;
@@ -77,18 +72,18 @@ export default async function InsightsPage() {
                   <div className="flex items-center gap-4 mb-6">
                     <Calendar className="w-4 h-4 text-brand-gold" />
                     <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70">
-                      {post.publishedAt}
+                      {post.published_at}
                     </span>
                     <div className="h-px flex-1 bg-brand-neutral" />
                   </div>
                   <h2 className="text-3xl md:text-4xl font-display font-bold text-brand-dark mb-4 group-hover:text-brand-plum transition-colors leading-tight italic">
-                    <Link href={`/insights/${post.slug}`}>{post.title}</Link>
+                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
                   <p className="text-gray-800 text-lg md:text-xl leading-relaxed mb-8 line-clamp-3 italic">
                     {post.description}
                   </p>
                   <div className="mt-auto">
-                    <Link href={`/insights/${post.slug}`} className="brand-button-secondary transition-all group/btn">
+                    <Link href={`/blog/${post.slug}`} className="brand-button-secondary transition-all group/btn">
                       {insightsPage.readMoreCta}
                       <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                     </Link>

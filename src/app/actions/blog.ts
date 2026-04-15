@@ -1,3 +1,7 @@
+'use server'
+
+import { supabaseAdmin } from '@/lib/supabase-admin'
+import { revalidatePath } from 'next/cache'
 import { BlogPost } from '@/types/blog'
 
 export async function getPublishedBlogPosts() {
@@ -91,7 +95,7 @@ export async function deleteBlogPosts(ids: string[]) {
   }
 
   revalidatePath('/admin/blog')
-  revalidatePath('/insights')
+  revalidatePath('/blog')
   revalidatePath('/')
   return { success: true, count: ids.length }
 }
@@ -167,9 +171,9 @@ export async function updateBlogPost(id: string, updates: Partial<BlogPost> | an
   revalidatePath(`/admin/blog/${id}`)
   revalidatePath('/')
   if (updates.status === 'published') {
-    revalidatePath('/insights')
+    revalidatePath('/blog')
     if (updates.slug) {
-      revalidatePath(`/insights/${updates.slug}`)
+      revalidatePath(`/blog/${updates.slug}`)
     }
   }
 }

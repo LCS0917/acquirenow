@@ -23,15 +23,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const post: BlogPost = {
-    id: postData.id,
+    ...postData,
     title: postData.title || postData.draft_title || 'Untitled',
     description: postData.description || '',
     content: postData.content || postData.draft_body || '',
-    slug: postData.slug,
-    status: postData.status as BlogStatus,
-    is_featured: postData.is_featured,
-    publishedAt: postData.published_at,
-    createdAt: postData.created_at,
   };
 
   const cmsContent = await getCmsPage('insightsPage');
@@ -56,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <header className="pt-24 pb-20 bg-brand-neutral/20 border-b border-brand-neutral relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-white skew-x-[-12deg] translate-x-20" />
         <div className="max-w-4xl mx-auto px-6 lg:px-12 relative z-10">
-          <Link href="/insights" className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/80 hover:text-brand-plum transition-colors flex items-center gap-3 mb-12 group">
+          <Link href="/blog" className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/80 hover:text-brand-plum transition-colors flex items-center gap-3 mb-12 group">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             {insightsPage.backToInsightsCta}
           </Link>
@@ -64,7 +59,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="flex items-center gap-8 mb-8">
             <div className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70">
               <Calendar className="w-4 h-4 text-brand-gold" />
-              {post.publishedAt}
+              {post.published_at}
             </div>
             <div className="h-px w-12 bg-brand-neutral" />
             <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70 italic">5 min read</span>
@@ -90,7 +85,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               prose-blockquote:border-brand-gold prose-blockquote:bg-brand-neutral/20 prose-blockquote:p-8 md:p-12 prose-blockquote:not-italic prose-blockquote:text-2xl md:text-3xl prose-blockquote:font-display prose-blockquote:font-bold prose-blockquote:text-brand-dark
               prose-strong:text-brand-plum prose-strong:font-bold
               prose-a:text-brand-plum prose-a:font-bold prose-a:no-underline hover:prose-a:text-brand-dark transition-colors border-b-2 border-brand-gold/30 hover:border-brand-gold"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: post.content || '' }}
           />
           
           <div className="mt-24 pt-16 border-t border-brand-neutral flex flex-col items-center text-center">

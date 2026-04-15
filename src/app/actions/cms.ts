@@ -53,7 +53,7 @@ export async function updateCmsSection(pageKey: string, sectionKey: string, cont
   revalidatePath('/about')
   revalidatePath('/work')
   revalidatePath('/vbcindex')
-  revalidatePath('/insights')
+  revalidatePath('/blog')
   revalidatePath('/admin/cms')
   return { success: true }
 }

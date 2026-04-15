@@ -61,7 +61,7 @@ export default function RootLayout({
                   <ul className="space-y-4 text-[12px] font-bold uppercase tracking-[0.4em]">
                     <li><Link href="/work" className="hover:text-brand-gold transition-colors">Work</Link></li>
                     <li><Link href="/vbcindex" className="hover:text-brand-gold transition-colors">VBC Index</Link></li>
-                    <li><Link href="/insights" className="hover:text-brand-gold transition-colors">Insights</Link></li>
+                    <li><Link href="/blog" className="hover:text-brand-gold transition-colors">Insights</Link></li>
                     <li><Link href="/about" className="hover:text-brand-gold transition-colors">About</Link></li>
                   </ul>
                 </div>

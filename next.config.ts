@@ -2,8 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  // This keeps your current engine settings
-  // @ts-ignore
+  // @ts-expect-error - turbopack is not yet in the types
   turbopack: {
     root: path.resolve(__dirname, "./"),
   },
@@ -13,6 +12,15 @@ const nextConfig: NextConfig = {
   },
   eslint: {
     ignoreDuringBuilds: true,
+  },
+  async redirects() {
+    return [
+      {
+        source: '/insights/:path*',
+        destination: '/blog/:path*',
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -16,12 +16,12 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
   // 1. Try to find explicitly featured posts
   const publishedFeaturedPosts = blogPosts
     .filter((post) => post.status === "published" && post.is_featured)
-    .sort((a, b) => new Date(b.publishedAt || '').getTime() - new Date(a.publishedAt || '').getTime());
+    .sort((a, b) => new Date(b.published_at || '').getTime() - new Date(a.published_at || '').getTime());
 
   // 2. If none, try to find any published posts
   const anyPublishedPosts = blogPosts
     .filter((post) => post.status === "published")
-    .sort((a, b) => new Date(b.publishedAt || '').getTime() - new Date(a.publishedAt || '').getTime());
+    .sort((a, b) => new Date(b.published_at || '').getTime() - new Date(a.published_at || '').getTime());
 
   // 3. Fallback logic: Featured > Latest > Null (show design with placeholder)
   const displayPost = publishedFeaturedPosts[0] || anyPublishedPosts[0];
@@ -143,7 +143,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
         <div className="max-w-7xl mx-auto">
           <article className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center group">
             <div className="lg:col-span-7">
-              <Link href={displayPost ? `/insights/${displayPost.slug}` : "/insights"} className="block overflow-hidden rounded-2xl shadow-bold border border-brand-plum/5 relative aspect-[16/9]">
+              <Link href={displayPost ? `/blog/${displayPost.slug}` : "/blog"} className="block overflow-hidden rounded-2xl shadow-bold border border-brand-plum/5 relative aspect-[16/9]">
                 {displayPost?.featured_image_url ? (
                   <Image 
                     src={displayPost.featured_image_url} 
@@ -173,7 +173,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
                 {displayPost?.description || "In-depth analysis of healthcare product strategy and value-based care delivery."}
               </p>
               <Link
-                href={displayPost ? `/insights/${displayPost.slug}` : "/insights"}
+                href={displayPost ? `/blog/${displayPost.slug}` : "/blog"}
                 className="brand-button-primary group"
               >
                 {homepage.featuredInsightSection.readArticleCta}

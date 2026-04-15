@@ -398,7 +398,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
                 </div>
                 <p className="text-[8px] text-gray-400 mt-2 font-bold uppercase tracking-widest flex items-center gap-1.5 italic">
                   <ExternalLink className="w-2.5 h-2.5" />
-                  insights/{slug || '...'}
+                  blog/{slug || '...'}
                 </p>
               </div>
 
@@ -422,7 +422,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
             <div className="absolute top-0 right-0 w-32 h-32 bg-brand-plum opacity-20 -m-16 rounded-full blur-2xl transition-opacity group-hover:opacity-40" />
             <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 mb-6">Article Preview</h3>
             <Link 
-              href={`/insights/${slug}`} 
+              href={`/blog/${slug}`} 
               target="_blank"
               className="w-full py-4 bg-white/10 hover:bg-white/20 border border-white/10 rounded-sm text-[10px] font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all"
             >

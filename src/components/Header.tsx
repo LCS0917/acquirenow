@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const navigation = [
   { name: "Work", href: "/work" },
   { name: "VBC Index", href: "/vbcindex" },
-  { name: "Insights", href: "/insights" },
+  { name: "Insights", href: "/blog" },
   { name: "About", href: "/about" },
 ];
 

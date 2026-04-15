@@ -246,7 +246,7 @@ export default function AdminBlogPage() {
                       </div>
                       <div className="text-[10px] font-bold text-brand-plum/30 mt-2 uppercase tracking-[0.3em] flex items-center gap-2">
                         <LayoutGrid className="w-3.5 h-3.5" />
-                        insights/{post.slug}
+                        blog/{post.slug}
                       </div>
                     </td>
                     <td className="px-8 py-6">
@@ -268,7 +268,7 @@ export default function AdminBlogPage() {
                     <td className="px-8 py-6 text-right">
                       <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">
                         <Link 
-                          href={`/insights/${post.slug}`} 
+                          href={`/blog/${post.slug}`} 
                           target="_blank"
                           className="p-2.5 text-brand-plum/30 hover:text-brand-plum bg-brand-neutral/50 rounded-xl transition-all"
                         >
