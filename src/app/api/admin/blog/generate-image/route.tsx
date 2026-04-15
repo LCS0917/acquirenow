@@ -17,12 +17,11 @@ export async function POST(req: NextRequest) {
     }
 
     const isDark = theme === 'dark'
-    // Applying AcquireNow Brand Colors
-    const bgColor = isDark ? '#222023' : '#EFEBE8'
-    const textColor = isDark ? '#EFEBE8' : '#222023'
-    const accentColor = '#522A6F' // Brand Plum
+    const bgColor = isDark ? '#003B46' : '#FAFAF8'
+    const textColor = isDark ? '#FAFAF8' : '#003B46'
 
     const cleanTitle = title.trim().replace(/\s+/g, ' ')
+    // Dynamic font sizing based on length
     const fontSize = cleanTitle.length > 70 ? '54px' : cleanTitle.length > 40 ? '64px' : '76px'
 
     const hasColon = cleanTitle.includes(':')
@@ -43,41 +42,23 @@ export async function POST(req: NextRequest) {
             justifyContent: 'center',
             padding: '0 120px',
             fontFamily: 'sans-serif',
-            position: 'relative',
           }}
         >
-          {/* Subtle Accent Stripe */}
-          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '12px', backgroundColor: accentColor }} />
-          
           <div
             style={{
               fontSize,
-              fontWeight: 900,
+              fontWeight: 800,
               color: textColor,
               textAlign: 'center',
-              lineHeight: 1.1,
+              lineHeight: 1.3,
               wordWrap: 'break-word',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              letterSpacing: '-0.04em',
             }}
           >
-            <div style={{ marginBottom: '10px' }}>{line1}</div>
-            {line2 && <div style={{ color: accentColor, opacity: 0.8 }}>{line2}</div>}
-          </div>
-
-          <div style={{ 
-            position: 'absolute', 
-            bottom: '60px', 
-            fontSize: '24px', 
-            fontWeight: 700, 
-            color: textColor, 
-            opacity: 0.4,
-            textTransform: 'uppercase',
-            letterSpacing: '0.3em'
-          }}>
-            AcquireNow
+            <div>{line1}</div>
+            {line2 && <div>{line2}</div>}
           </div>
         </div>
       ),

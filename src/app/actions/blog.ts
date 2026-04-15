@@ -2,14 +2,13 @@
 
 import { supabaseAdmin } from '@/lib/supabase-admin'
 import { revalidatePath } from 'next/cache'
-import { BlogPost } from '@/types/blog'
 
 export async function getPublishedBlogPosts() {
   const { data, error } = await supabaseAdmin
     .from('blog_posts')
-    .select('id, slug, title, content, description, draft_title, draft_body, target_audience, core_theme, is_featured, published_at, created_at')
+    .select('id, slug, title, draft_title, description, draft_body, target_audience, core_theme, is_featured, featured_image_url, status, published_at, created_at')
     .eq('status', 'published')
-    .order('created_at', { ascending: false })
+    .order('published_at', { ascending: false })
 
   if (error) {
     console.error('Error fetching published blog posts:', error)
@@ -35,10 +34,10 @@ export async function getBlogPostBySlug(slug: string) {
 export async function getFeaturedBlogPost() {
   const { data, error } = await supabaseAdmin
     .from('blog_posts')
-    .select('id, slug, title, draft_title, description, target_audience, core_theme, is_featured, created_at')
+    .select('id, slug, title, draft_title, description, target_audience, core_theme, is_featured, featured_image_url, published_at, created_at')
     .eq('status', 'published')
     .eq('is_featured', true)
-    .order('created_at', { ascending: false })
+    .order('published_at', { ascending: false })
     .limit(1)
     .single()
 
@@ -46,9 +45,9 @@ export async function getFeaturedBlogPost() {
     // Fallback to most recent if no featured
     const { data: latest, error: fallbackError } = await supabaseAdmin
       .from('blog_posts')
-      .select('id, slug, title, draft_title, description, target_audience, core_theme, is_featured, created_at')
+      .select('id, slug, title, draft_title, description, target_audience, core_theme, is_featured, featured_image_url, published_at, created_at')
       .eq('status', 'published')
-      .order('created_at', { ascending: false })
+      .order('published_at', { ascending: false })
       .limit(1)
       .maybeSingle()
     return fallbackError ? null : latest
@@ -96,7 +95,6 @@ export async function deleteBlogPosts(ids: string[]) {
 
   revalidatePath('/admin/blog')
   revalidatePath('/blog')
-  revalidatePath('/')
   return { success: true, count: ids.length }
 }
 
@@ -121,8 +119,7 @@ export async function createBlankBlogPost() {
       draft_title: 'Untitled Draft',
       draft_body: '',
       status: 'draft',
-      target_audience: 'All',
-      slug: `untitled-${crypto.randomUUID().substring(0, 8)}` // Added to satisfy NOT NULL
+      target_audience: 'All'
     })
     .select('id')
     .single()
@@ -136,15 +133,14 @@ export async function createBlankBlogPost() {
   return data
 }
 
-export async function updateBlogPost(id: string, updates: Partial<BlogPost> | any) {
-  if (updates.status === 'published') {
-    if (!updates.slug || updates.slug.trim() === '') {
-      throw new Error('A URL slug is required to publish.')
-    }
-    // Copy draft values to live columns when publishing
-    if (updates.draft_title !== undefined) updates.title = updates.draft_title;
-    if (updates.draft_body !== undefined) updates.content = updates.draft_body;
+export async function updateBlogPost(id: string, updates: any) {
+  if (updates.status === 'published' && (!updates.slug || updates.slug.trim() === '')) {
+    throw new Error('A URL slug is required to publish.')
   }
+
+  // Sync draft fields to live fields for maximum compatibility
+  if (updates.draft_title !== undefined) updates.title = updates.draft_title;
+  if (updates.draft_body !== undefined) updates.content = updates.draft_body;
 
   // If this post is being set as featured, unset all others first
   if (updates.is_featured === true) {
@@ -164,7 +160,7 @@ export async function updateBlogPost(id: string, updates: Partial<BlogPost> | an
     if (error.code === '23505') {
       throw new Error('Slug already in use.')
     }
-    throw new Error('Failed to update post')
+    throw new Error(error.message || 'Failed to update post')
   }
   
   revalidatePath('/admin/blog')

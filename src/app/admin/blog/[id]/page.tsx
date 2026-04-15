@@ -43,8 +43,8 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
   const [body, setBody] = useState('')
   const [status, setStatus] = useState<BlogStatus>('draft')
   const [isFeatured, setIsFeatured] = useState(false)
-  const [featuredImageUrl, setFeaturedImageUrl] = useState('')
-  
+  const [featuredImageUrl, setFeaturedImageUrl] = useState<string>('')
+
   const [generateTheme, setGenerateTheme] = useState<'light' | 'dark'>('light')
   const [isGeneratingImage, setIsGeneratingImage] = useState(false)
 
@@ -61,11 +61,11 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
     try {
       const post = await getBlogPostById(id)
       if (post) {
-        setTitle(post.draft_title || '')
+        setTitle(post.draft_title || post.title || '')
         setSlug(post.slug || '')
         if (post.slug && !post.slug.startsWith('untitled-')) setSlugEdited(true)
         setDescription(post.description || '')
-        setBody(post.draft_body || '')
+        setBody(post.content || post.draft_body || '')
         setStatus(post.status || 'draft')
         setIsFeatured(post.is_featured || false)
         setFeaturedImageUrl(post.featured_image_url || '')
@@ -159,7 +159,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
           draft_body: body,
           status: statusToSave,
           is_featured: isFeatured,
-          featured_image_url: featuredImageUrl
+          featured_image_url: featuredImageUrl || null
         }
 
         if (statusToSave === 'published' && status !== 'published') {
@@ -277,92 +277,12 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
 
         {/* Sidebar / Options */}
         <div className="lg:col-span-4 space-y-8">
-          {/* Image Settings */}
-          <div className="bg-white border border-brand-neutral/50 rounded-sm subtle-shadow p-8">
-            <div className="flex items-center justify-between mb-8 border-b border-brand-neutral/30 pb-4">
-              <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-dark">Featured Image</h3>
-              <div className="flex items-center gap-2">
-                <select
-                  value={generateTheme}
-                  onChange={(e) => setGenerateTheme(e.target.value as 'light' | 'dark')}
-                  className="text-[9px] font-bold uppercase border border-brand-neutral rounded-sm px-2 py-1 bg-brand-neutral/10 text-brand-dark focus:outline-none focus:ring-1 focus:ring-brand-plum/30"
-                >
-                  <option value="light">Light</option>
-                  <option value="dark">Dark</option>
-                </select>
-                <button
-                  type="button"
-                  onClick={handleGenerateImage}
-                  disabled={isGeneratingImage || !title.trim() || imageUploading}
-                  className="text-[9px] font-bold uppercase bg-brand-plum text-white px-2 py-1 rounded-sm transition-all disabled:opacity-50 flex items-center gap-1.5"
-                >
-                  {isGeneratingImage ? <Loader2 className="w-2.5 h-2.5 animate-spin" /> : <Sparkles className="w-2.5 h-2.5" />}
-                  AI
-                </button>
-              </div>
-            </div>
-
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/jpeg,image/png,image/webp,image/gif"
-              className="hidden"
-              onChange={(e) => {
-                const file = e.target.files?.[0]
-                if (file) handleImageUpload(file)
-                e.target.value = ''
-              }}
-            />
-
-            {featuredImageUrl ? (
-              <div className="relative w-full aspect-video rounded-sm overflow-hidden border border-brand-neutral group bg-brand-neutral/10">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={featuredImageUrl} alt="Featured" className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-brand-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3 backdrop-blur-[2px]">
-                  <button
-                    type="button"
-                    onClick={() => fileInputRef.current?.click()}
-                    className="bg-white text-brand-dark text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm hover:bg-brand-neutral transition-colors"
-                  >
-                    Replace
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setFeaturedImageUrl('')}
-                    className="bg-brand-plum text-white text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-sm hover:bg-brand-plum/90 transition-colors"
-                  >
-                    Remove
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={imageUploading}
-                className="w-full aspect-video border border-dashed border-brand-neutral/50 hover:border-brand-plum/50 rounded-sm flex flex-col items-center justify-center gap-3 text-gray-400 hover:text-brand-plum transition-all bg-brand-neutral/5"
-              >
-                {imageUploading ? (
-                  <Loader2 className="w-6 h-6 animate-spin" />
-                ) : (
-                  <>
-                    <div className="w-10 h-10 bg-brand-neutral/10 rounded-full flex items-center justify-center">
-                      <Upload className="w-5 h-5" />
-                    </div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest">Import Asset</div>
-                  </>
-                )}
-              </button>
-            )}
-            {imageError && <p className="text-[9px] font-bold uppercase text-red-500 mt-4 tracking-widest text-center">{imageError}</p>}
-          </div>
-
           {/* Article Config */}
-          <div className="bg-white border border-brand-neutral/50 rounded-sm subtle-shadow p-8 space-y-8">
+          <div>
             <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-brand-dark border-b border-brand-neutral/30 pb-4">
               Article Configuration
             </h3>
-            
+
             <div className="space-y-6">
               {/* Featured Toggle */}
               <div className="flex items-start gap-4 p-4 rounded-sm border border-brand-neutral/30 bg-brand-neutral/10 hover:bg-brand-neutral/20 transition-colors cursor-pointer"
@@ -414,6 +334,109 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
+              </div>
+
+              {/* Featured Image */}
+              <div>
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-3">
+                  Featured Image
+                </label>
+
+                {featuredImageUrl ? (
+                  <div className="relative mb-3 border border-brand-neutral/30 rounded-sm overflow-hidden aspect-[2/1] bg-brand-neutral/10">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={featuredImageUrl}
+                      alt="Featured"
+                      className="w-full h-full object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setFeaturedImageUrl('')}
+                      className="absolute top-2 right-2 px-2 py-1 bg-black/70 text-white text-[9px] font-bold uppercase tracking-widest rounded-sm hover:bg-black"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ) : (
+                  <div className="mb-3 border border-dashed border-brand-neutral/40 rounded-sm aspect-[2/1] flex items-center justify-center text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                    No image set
+                  </div>
+                )}
+
+                {/* Upload */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp,image/gif"
+                  className="hidden"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0]
+                    if (f) handleImageUpload(f)
+                    e.target.value = ''
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={imageUploading}
+                  className="w-full mb-3 px-4 py-3 border border-brand-dark text-brand-dark hover:bg-brand-neutral rounded-sm text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {imageUploading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Upload className="w-3.5 h-3.5" />}
+                  Upload Image
+                </button>
+
+                {/* Generate from title */}
+                <div className="p-3 border border-brand-neutral/30 rounded-sm bg-brand-neutral/10 space-y-3">
+                  <div className="text-[9px] font-bold uppercase tracking-[0.2em] text-gray-500">
+                    Generate from title
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setGenerateTheme('light')}
+                      className={`flex-1 px-3 py-2 rounded-sm text-[9px] font-bold uppercase tracking-widest transition-all ${
+                        generateTheme === 'light'
+                          ? 'bg-brand-dark text-white'
+                          : 'bg-white text-brand-dark border border-brand-neutral/40 hover:border-brand-dark'
+                      }`}
+                    >
+                      Light
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setGenerateTheme('dark')}
+                      className={`flex-1 px-3 py-2 rounded-sm text-[9px] font-bold uppercase tracking-widest transition-all ${
+                        generateTheme === 'dark'
+                          ? 'bg-brand-dark text-white'
+                          : 'bg-white text-brand-dark border border-brand-neutral/40 hover:border-brand-dark'
+                      }`}
+                    >
+                      Dark
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleGenerateImage}
+                    disabled={isGeneratingImage || !title.trim()}
+                    className="w-full px-4 py-2.5 bg-brand-plum text-white hover:bg-brand-dark rounded-sm text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {isGeneratingImage ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                    Generate Image
+                  </button>
+                  {!title.trim() && (
+                    <p className="text-[9px] text-gray-400 italic">
+                      Enter a headline first.
+                    </p>
+                  )}
+                </div>
+
+                {imageError && (
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-red-600 flex items-center gap-2">
+                    <AlertCircle className="w-3 h-3" />
+                    {imageError}
+                  </p>
+                )}
               </div>
             </div>
           </div>

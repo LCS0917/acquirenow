@@ -9,7 +9,7 @@ export interface BlogPost {
   core_theme: string;
   status: BlogStatus;
   is_featured: boolean;
-  featured_image_url: string | null;
+  featured_image_url?: string | null;
   created_at: string;
   published_at?: string | null;
   // Temporary for backward compatibility during migration

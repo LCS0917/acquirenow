@@ -59,7 +59,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="flex items-center gap-8 mb-8">
             <div className="flex items-center gap-3 text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70">
               <Calendar className="w-4 h-4 text-brand-gold" />
-              {post.published_at}
+              {post.published_at ? new Date(post.published_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              }) : 'Recently Published'}
             </div>
             <div className="h-px w-12 bg-brand-neutral" />
             <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70 italic">5 min read</span>

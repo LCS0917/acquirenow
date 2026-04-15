@@ -80,7 +80,11 @@ export default async function InsightsPage() {
                   <div className="flex items-center gap-4 mb-6">
                     <Calendar className="w-4 h-4 text-brand-gold" />
                     <span className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70">
-                      {post.published_at}
+                      {post.published_at ? new Date(post.published_at).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      }) : 'Recently Published'}
                     </span>
                     <div className="h-px flex-1 bg-brand-neutral" />
                   </div>

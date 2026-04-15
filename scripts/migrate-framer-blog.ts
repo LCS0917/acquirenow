@@ -78,15 +78,13 @@ async function migrateToSupabase() {
         .insert({
           title: post.title,
           slug: post.slug,
-          content: post.content_html, // Assuming the new CMS handles raw HTML for migration, or update column name if different
-          description: post.excerpt, // Mapped excerpt to description based on BlogPost schema
+          content: post.content_html, 
+          description: post.excerpt,
           status: 'draft',
           is_featured: false,
           published_at: publishedAt,
-          // draft_title, draft_body, target_audience, core_theme are required by the local schema
-          // We default them to safe values if the table requires them.
           draft_title: post.title,
-          draft_body: post.excerpt,
+          draft_body: post.content_html, // Full content goes here too
           target_audience: 'General',
           core_theme: 'Migration'
         });
