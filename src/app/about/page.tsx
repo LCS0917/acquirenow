@@ -121,6 +121,8 @@ export default async function AboutPage() {
               <div className="flex flex-col sm:flex-row gap-8">
                 <a
                   href="mailto:lena@acquirenowhq.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="brand-button-inverted shadow-bold"
                 >
                   {about.connectSection.cta}

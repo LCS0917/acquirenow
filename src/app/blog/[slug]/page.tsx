@@ -104,7 +104,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className="text-xl text-gray-700 max-w-md mb-8 italic leading-relaxed">
               Healthcare operator specialized in product strategy, go-to-market execution, and value-based care delivery.
             </p>
-            <Link href="/about" className="brand-button-primary bg-brand-plum hover:bg-brand-dark">
+            <Link href="/about" target="_blank" rel="noopener noreferrer" className="brand-button-primary bg-brand-plum hover:bg-brand-dark">
               Learn More About Lena
               <ArrowRight className="ml-3 w-4 h-4" />
             </Link>

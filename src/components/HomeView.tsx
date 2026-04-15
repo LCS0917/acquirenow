@@ -48,7 +48,12 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
 
             <div className="flex flex-col md:flex-row md:items-start gap-8 mt-12">
               <div className="flex-shrink-0">
-                <Link href="/work" className="brand-button-primary">
+                <Link
+                  href="mailto:lena@acquirenowhq.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="brand-button-primary"
+                >
                   {homepage.hero.cta}
                   <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -88,7 +93,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
           </div>
 
           <div className="mt-20 flex justify-center animate-in fade-in slide-in-from-bottom-4 duration-1000 ease-out-expo delay-500 fill-both">
-            <Link href="/work" className="brand-button-inverted px-12 py-5 group">
+            <Link href="/work" target="_blank" rel="noopener noreferrer" className="brand-button-inverted px-12 py-5 group">
               {homepage.valuePropsViewAllCta}
               <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -113,7 +118,7 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
                 <p className="text-xl md:text-2xl text-brand-plum/90 mb-12 leading-relaxed italic border-l-2 border-brand-plum pl-10">
                   {homepage.vbcIndexSection.description}
                 </p>
-                <Link href="/vbcindex" className="brand-button-primary group">
+                <Link href="/vbcindex" target="_blank" rel="noopener noreferrer" className="brand-button-primary group">
                   {homepage.vbcIndexSection.cta}
                   <ChevronRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
@@ -170,6 +175,8 @@ export default function HomeView({ data, blogPosts }: HomeViewProps) {
               </p>
               <Link
                 href={displayPost ? `/blog/${displayPost.slug}` : "/blog"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="brand-button-primary group"
               >
                 {homepage.featuredInsightSection.readArticleCta}

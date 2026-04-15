@@ -95,7 +95,7 @@ export default async function InsightsPage() {
                     {post.description}
                   </p>
                   <div className="mt-auto">
-                    <Link href={`/blog/${post.slug}`} className="brand-button-secondary transition-all group/btn">
+                    <Link href={`/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="brand-button-secondary transition-all group/btn">
                       {insightsPage.readMoreCta}
                       <ArrowRight className="ml-3 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                     </Link>
