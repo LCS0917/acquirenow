@@ -9,14 +9,17 @@ export const cmsData: CMSData = {
     },
     valueProps: [
       {
+        stat: "10X",
         title: "Build and launch products",
         description: "From early concept to market-ready execution. I turn unclear ideas into structured products that can be sold, adopted, and scaled.",
       },
       {
+        stat: "$30M+",
         title: "Drive go-to-market and revenue",
         description: "Positioning, commercial strategy, and execution tied directly to growth. Not just messaging, but systems that produce pipeline and revenue.",
       },
       {
+        stat: "13+ years",
         title: "Align stakeholders",
         description: "Work across clinical, product, and executive teams to move initiatives forward inside complex, matrixed organizations.",
       },
@@ -80,6 +83,9 @@ export const cmsData: CMSData = {
     insightsPreview: {
       headline: "Insights",
     },
+    testimonial: {
+      quote: "VBCIndex helps organizations identify opportunities, manage risk, and align strategy with real market dynamics.",
+    }
   },
   workPage: {
     headline: "Work & Experience",
@@ -130,14 +136,30 @@ export const cmsData: CMSData = {
   vbcIndexPage: {
     headline: "The VBC Index",
     intro: "VBCIndex is a product built to make value-based care easier to understand and act on.",
-    labels: {
-      problem: "The Problem",
-      approach: "Our Approach",
-      whyItMatters: "Why It Matters",
+    ctaTop: "Explore the Index",
+    subHeadline: "Turn Value-Based Care Into Revenue",
+    subHeadlineDescription: "VBCIndex simplifies fragmented data so you can quickly identify, evaluate, and act on the right opportunities.",
+    ctaBottom: "Get Started with VBCIndex",
+    section1: {
+      headline: "More Intelligence. Less Friction.",
+      description: "Value-based care can unlock existing revenue, but most organizations don’t have the time, resources, or tools to connect the dots. VBCIndex, connects the dots for you.",
+      points: [
+        { title: "Automated Model Indexing", description: "Continuously updated CMS model rules, participation requirements, and implementation guidance in one place." },
+        { title: "Unified Data Layer", description: "5,000+ facilities, 400+ ACOs, and 3,000+ counties, structured into a single, reliable dataset." },
+        { title: "Financial & Performance Benchmarks", description: "Medicare cost reports, shared savings, and HCC risk scores to benchmark against regional and national performance." },
+        { title: "Regulatory & Social Context", description: "Built-in CMS requirements and ADI data to account for compliance and social risk factors." },
+      ]
     },
-    problem: "Value-based care data is fragmented, inconsistent, and difficult to use for decision-making.",
-    approach: "Structured data combined with an intelligence layer to surface actionable insights.",
-    whyItMatters: "Helps organizations identify opportunities, manage risk, and align strategy with real market dynamics.",
+    section2: {
+      headline: "The Era of the Mini-Product",
+      description: "When the barrier to building is gone, strategy alone isn’t enough. The advantage shifts to those who can turn insight into usable tools. In complex markets like healthcare, the most effective GTM doesn’t push more messaging, it builds resources people actually use.",
+      points: [
+        { title: "Product-Led Execution", description: "Built from experience turning strategy into real, usable tools that drive action, not just ideas." },
+        { title: "Independent Build", description: "Created without engineering bottlenecks, enabling faster iteration and deployment of high-value resources." },
+        { title: "Attraction Over Noise", description: "Designed to pull in the right audience through utility, not push generic AI-driven messaging." },
+        { title: "Cost + Precision", description: "Uses RAG-based systems to structure fragmented data into actionable insight without the cost of layered, agent-heavy workflows." },
+      ]
+    }
   },
   aboutPage: {
     headline: "About Lena Shaw",

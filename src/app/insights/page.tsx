@@ -50,11 +50,7 @@ export default async function InsightsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-4 mb-8">
-                <span className="px-3 py-1 bg-brand-dark text-white text-[12px] font-bold uppercase tracking-[0.4em]">Editorial</span>
-                <div className="h-px w-12 bg-brand-dark/20" />
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8">
+              <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight">
                 {insightsPage.headline}
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic border-l-4 border-brand-gold pl-12">

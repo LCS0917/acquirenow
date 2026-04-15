@@ -47,6 +47,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Value Prop 1',
         group: 'Value Propositions',
         fields: [
+          { key: 'stat', label: 'Stat (e.g. 10X)', type: 'text' },
           { key: 'title', label: 'Title', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
         ]
@@ -56,6 +57,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Value Prop 2',
         group: 'Value Propositions',
         fields: [
+          { key: 'stat', label: 'Stat (e.g. $30M+)', type: 'text' },
           { key: 'title', label: 'Title', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
         ]
@@ -65,6 +67,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         label: 'Value Prop 3',
         group: 'Value Propositions',
         fields: [
+          { key: 'stat', label: 'Stat (e.g. 13+ years)', type: 'text' },
           { key: 'title', label: 'Title', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
         ]
@@ -135,6 +138,14 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'workPreviewCta', label: 'All Cases Label', type: 'text' },
           { key: 'caseStudyLabel', label: 'Case Study Link Label', type: 'text' },
         ]
+      },
+      {
+        section_key: 'testimonial',
+        label: 'Quote Section',
+        group: 'Footer Content',
+        fields: [
+          { key: 'quote', label: 'Quote Text', type: 'textarea' },
+        ]
       }
     ]
   },
@@ -166,22 +177,48 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
     sections: [
       {
         section_key: 'content',
-        label: 'Main Content',
+        label: 'Main Header',
         fields: [
-          { key: 'headline', label: 'Headline', type: 'text' },
-          { key: 'intro', label: 'Introduction', type: 'textarea' },
-          { key: 'problem', label: 'The Problem', type: 'textarea' },
-          { key: 'approach', label: 'Our Approach', type: 'textarea' },
-          { key: 'whyItMatters', label: 'Why It Matters', type: 'textarea' },
+          { key: 'headline', label: 'Hero Headline', type: 'text' },
+          { key: 'intro', label: 'Hero Introduction', type: 'textarea' },
+          { key: 'ctaTop', label: 'Top Button Text', type: 'text' },
+          { key: 'subHeadline', label: 'Sub-Hero Headline', type: 'text' },
+          { key: 'subHeadlineDescription', label: 'Sub-Hero Description', type: 'textarea' },
+          { key: 'ctaBottom', label: 'Bottom Button Text', type: 'text' },
         ]
       },
       {
-        section_key: 'labels',
-        label: 'Labels',
+        section_key: 'section1',
+        label: 'Intelligence & Friction',
+        group: 'Core Value 1',
         fields: [
-          { key: 'problem', label: 'Problem Label', type: 'text' },
-          { key: 'approach', label: 'Approach Label', type: 'text' },
-          { key: 'whyItMatters', label: 'Why It Matters Label', type: 'text' },
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'p1Title', label: 'Point 1 Title', type: 'text' },
+          { key: 'p1Desc', label: 'Point 1 Description', type: 'textarea' },
+          { key: 'p2Title', label: 'Point 2 Title', type: 'text' },
+          { key: 'p2Desc', label: 'Point 2 Description', type: 'textarea' },
+          { key: 'p3Title', label: 'Point 3 Title', type: 'text' },
+          { key: 'p3Desc', label: 'Point 3 Description', type: 'textarea' },
+          { key: 'p4Title', label: 'Point 4 Title', type: 'text' },
+          { key: 'p4Desc', label: 'Point 4 Description', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'section2',
+        label: 'The Mini-Product Era',
+        group: 'Core Value 2',
+        fields: [
+          { key: 'headline', label: 'Headline', type: 'text' },
+          { key: 'description', label: 'Description', type: 'textarea' },
+          { key: 'p1Title', label: 'Point 1 Title', type: 'text' },
+          { key: 'p1Desc', label: 'Point 1 Description', type: 'textarea' },
+          { key: 'p2Title', label: 'Point 2 Title', type: 'text' },
+          { key: 'p2Desc', label: 'Point 2 Description', type: 'textarea' },
+          { key: 'p3Title', label: 'Point 3 Title', type: 'text' },
+          { key: 'p3Desc', label: 'Point 3 Description', type: 'textarea' },
+          { key: 'p4Title', label: 'Point 4 Title', type: 'text' },
+          { key: 'p4Desc', label: 'Point 4 Description', type: 'textarea' },
         ]
       }
     ]
@@ -234,6 +271,7 @@ export interface CMSData {
       cta: string;
     };
     valueProps: Array<{
+      stat: string;
       title: string;
       description: string;
     }>;
@@ -268,6 +306,9 @@ export interface CMSData {
     insightsPreview: {
       headline: string;
     };
+    testimonial: {
+      quote: string;
+    };
   };
   workPage: {
     headline: string;
@@ -289,14 +330,20 @@ export interface CMSData {
   vbcIndexPage: {
     headline: string;
     intro: string;
-    labels: {
-      problem: string;
-      approach: string;
-      whyItMatters: string;
+    ctaTop: string;
+    subHeadline: string;
+    subHeadlineDescription: string;
+    ctaBottom: string;
+    section1: {
+      headline: string;
+      description: string;
+      points: Array<{ title: string; description: string }>;
     };
-    problem: string;
-    approach: string;
-    whyItMatters: string;
+    section2: {
+      headline: string;
+      description: string;
+      points: Array<{ title: string; description: string }>;
+    };
   };
   aboutPage: {
     headline: string;

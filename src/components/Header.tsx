@@ -20,9 +20,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-brand-neutral">
       <nav className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-4 group" onClick={() => setIsOpen(false)}>
-          <div className="relative h-10 w-10 transition-transform group-hover:scale-110">
+          <div className="relative h-8 w-40 transition-transform group-hover:scale-105">
             <Image 
-              src="/assets/a-logo.png" 
+              src="/assets/logo-color.png" 
               alt="AcquireNow" 
               fill
               priority

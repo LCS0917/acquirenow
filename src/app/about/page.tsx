@@ -38,21 +38,32 @@ export default async function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <div className="lg:col-span-5">
               <div className="aspect-[4/5] bg-brand-dark rounded-2xl overflow-hidden shadow-bold relative group border border-white/5">
-                <div className="absolute inset-0 bg-brand-plum opacity-20 group-hover:opacity-30 transition-opacity" />
-                <div className="absolute inset-0 flex items-center justify-center text-white/5 font-display font-bold text-[8rem] rotate-90 select-none uppercase leading-none">
-                  Operator
+                {/* Visual Image Treatment */}
+                <div className="absolute inset-0 bg-brand-plum opacity-40 group-hover:opacity-50 transition-opacity duration-700" />
+                
+                {/* Decorative Soft Ring Motif in the Image */}
+                <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
+                  <div className="absolute top-0 right-0 w-[400px] h-[400px] border-[20px] border-brand-gold rounded-full translate-x-1/2 -translate-y-1/2" />
+                  <div className="absolute bottom-0 left-0 w-[300px] h-[300px] border-[10px] border-white rounded-full -translate-x-1/2 translate-y-1/2 opacity-30" />
                 </div>
-                <div className="absolute bottom-10 left-10 right-10">
-                   <div className="h-px w-10 bg-brand-gold mb-6" />
-                   <p className="text-white/70 text-[12px] font-bold uppercase tracking-[0.4em]">Strategic Lead</p>
+
+                <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="text-white/5 font-display font-bold text-[12rem] rotate-90 select-none uppercase leading-none tracking-tighter transition-all duration-1000 group-hover:scale-110 group-hover:text-white/10">
+                     Lead
+                   </div>
                 </div>
+
+                <div className="absolute bottom-10 left-10 right-10 z-10">
+                   <div className="h-px w-12 bg-brand-gold mb-6 group-hover:w-20 transition-all duration-700" />
+                   <p className="text-white font-bold text-[14px] uppercase tracking-[0.4em] drop-shadow-md">Strategic Operations</p>
+                </div>
+                
+                {/* Subtle Gradient Overlays */}
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-plum/20 to-transparent" />
               </div>
             </div>
             <div className="lg:col-span-7">
-              <div className="flex items-center gap-4 mb-8">
-                <span className="px-4 py-1.5 bg-brand-plum/5 text-brand-plum text-[12px] font-bold uppercase tracking-[0.3em] rounded-full border border-brand-plum/10">Lena Shaw</span>
-                <div className="h-px w-12 bg-brand-plum/10" />
-              </div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl mb-8 tracking-tight">
                 {about.headline}
               </h1>
@@ -110,7 +121,7 @@ export default async function AboutPage() {
                 </a>
                 <a
                   href="#"
-                  className="brand-button-secondary border-white/20 text-white hover:border-brand-gold hover:text-brand-dark"
+                  className="inline-flex items-center justify-center px-8 py-3.5 font-bold text-sm uppercase tracking-widest rounded-xl border-2 border-white text-white hover:bg-white hover:text-brand-dark transition-all duration-300"
                 >
                   LinkedIn
                 </a>

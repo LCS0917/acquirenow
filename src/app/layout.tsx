@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   title: "AcquireNow | Lena Shaw",
   description: "Healthcare Operations & Product Strategy",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/assets/a-logo.png",
   },
 };
 
