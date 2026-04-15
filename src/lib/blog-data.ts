@@ -9,8 +9,8 @@ export const blogData: BlogPost[] = [
     slug: "scaling-digital-health",
     status: "published",
     is_featured: true,
-    publishedAt: "2026-04-01",
-    createdAt: "2026-03-25",
+    published_at: "2026-04-01",
+    created_at: "2026-03-25",
   },
   {
     id: "2",
@@ -20,7 +20,7 @@ export const blogData: BlogPost[] = [
     slug: "future-of-vbc",
     status: "published",
     is_featured: false,
-    publishedAt: "2026-04-10",
-    createdAt: "2026-04-05",
+    published_at: "2026-04-10",
+    created_at: "2026-04-05",
   },
 ];

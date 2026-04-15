@@ -4,6 +4,7 @@ import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
+import { useRef, useState } from "react";
 import { 
   Bold, 
   Italic, 
@@ -15,7 +16,8 @@ import {
   Link as LinkIcon,
   Image as ImageIcon,
   Undo,
-  Redo
+  Redo,
+  Loader2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -25,6 +27,9 @@ interface RichTextEditorProps {
 }
 
 export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -45,13 +50,47 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
 
   if (!editor) return null;
 
-  const MenuButton = ({ onClick, isActive, children, title }: any) => (
+  const handleImageUpload = async (file: File) => {
+    setIsUploading(true);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const res = await fetch("/api/admin/blog/upload-image", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (res.ok) {
+        const { url } = await res.json();
+        editor.chain().focus().setImage({ src: url }).run();
+      } else {
+        alert("Image upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Network error during upload");
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  interface MenuButtonProps {
+    onClick: () => void;
+    isActive?: boolean;
+    children: React.ReactNode;
+    title: string;
+    disabled?: boolean;
+  }
+
+  const MenuButton = ({ onClick, isActive, children, title, disabled }: MenuButtonProps) => (
     <button
       type="button"
       onClick={onClick}
+      disabled={disabled}
       title={title}
       className={cn(
-        "p-2 rounded-sm transition-colors hover:bg-brand-neutral/50",
+        "p-2 rounded-sm transition-colors hover:bg-brand-neutral/50 disabled:opacity-50",
         isActive ? "bg-brand-neutral text-brand-plum" : "text-gray-500"
       )}
     >
@@ -130,6 +169,27 @@ export function RichTextEditor({ content, onChange }: RichTextEditorProps) {
         >
           <LinkIcon className="w-4 h-4" />
         </MenuButton>
+
+        <MenuButton 
+          onClick={() => fileInputRef.current?.click()}
+          isActive={false}
+          disabled={isUploading}
+          title="Upload Image"
+        >
+          {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />}
+        </MenuButton>
+
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="hidden"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) handleImageUpload(file);
+            e.target.value = "";
+          }}
+        />
 
         <div className="flex-1" />
 

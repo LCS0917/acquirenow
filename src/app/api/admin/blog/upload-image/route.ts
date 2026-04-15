@@ -1,6 +1,11 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { validateAdmin } from "@/lib/admin-auth";
+import { supabaseAdmin } from "@/lib/supabase-admin";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  const authError = await validateAdmin(req)
+  if (authError) return authError
+
   try {
     const formData = await req.formData();
     const file = formData.get("file") as File;
@@ -9,13 +14,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    // Simulate Upload Delay
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const buffer = Buffer.from(await file.arrayBuffer());
+    const filename = `uploads/${Date.now()}-${file.name.replace(/\s+/g, '_')}`;
 
-    // In a real app, you would upload to Supabase Storage here.
-    // For now, return a placeholder to verify the UI flow.
-    return NextResponse.json({ url: "https://images.unsplash.com/photo-1576091160550-2173dad99978?q=80&w=1000&auto=format&fit=crop" });
+    const { error: uploadError } = await supabaseAdmin.storage
+      .from('blog-images')
+      .upload(filename, buffer, {
+        contentType: file.type,
+        upsert: false
+      });
+
+    if (uploadError) {
+      return NextResponse.json({ error: uploadError.message }, { status: 500 });
+    }
+
+    const { data } = supabaseAdmin.storage.from('blog-images').getPublicUrl(filename);
+    return NextResponse.json({ url: data.publicUrl });
   } catch (error) {
+    console.error("Upload error:", error);
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }
 }

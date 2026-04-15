@@ -89,8 +89,8 @@ Your HTML body here
     const { data: updatedDraft, error: updateError } = await supabaseAdmin
       .from('blog_posts')
       .update({
-        title: llmTitle,
-        content: llmBody,
+        draft_title: llmTitle,
+        draft_body: llmBody,
         status: 'draft',
         // Update slug to reflect real title
         slug: `${llmTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}-${draft_id.substring(0, 4)}`

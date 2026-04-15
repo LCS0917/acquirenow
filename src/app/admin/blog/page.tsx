@@ -263,7 +263,7 @@ export default function AdminBlogPage() {
                       </span>
                     </td>
                     <td className="px-8 py-6 text-[11px] font-bold text-brand-plum/40 uppercase tracking-[0.2em] italic">
-                      {post.createdAt}
+                      {post.created_at}
                     </td>
                     <td className="px-8 py-6 text-right">
                       <div className="flex justify-end gap-3 opacity-0 group-hover:opacity-100 transition-opacity">

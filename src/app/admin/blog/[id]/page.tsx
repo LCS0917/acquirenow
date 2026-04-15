@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useTransition, use, useRef } from "react";
-import { BlogPost, BlogStatus } from "@/types/blog";
+import { useState, useEffect, useTransition, use, useRef, useCallback } from "react";
+import { BlogStatus } from "@/types/blog";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { 
@@ -11,14 +11,10 @@ import {
   Loader2,
   CheckCircle2,
   AlertCircle,
-  Image as ImageIcon,
-  Star,
   ExternalLink,
   Upload,
-  Sparkles,
-  ChevronDown
+  Sparkles
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { getBlogPostById, updateBlogPost } from "@/app/actions/blog";
 import { RichTextEditor } from "@/components/rich-text-editor";
 
@@ -38,7 +34,6 @@ function formatManualSlug(text: string) {
 }
 
 export default function AdminBlogEditPage({ params }: { params: Promise<{ id: string }> }) {
-  const router = useRouter();
   const { id } = use(params);
   
   const [title, setTitle] = useState('')
@@ -61,11 +56,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
   const [imageError, setImageError] = useState('')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    loadPost()
-  }, [id])
-
-  async function loadPost() {
+  const loadPost = useCallback(async () => {
     setIsLoading(true)
     try {
       const post = await getBlogPostById(id)
@@ -81,12 +72,16 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
       } else {
         setErrorMsg("Post not found")
       }
-    } catch (err) {
+    } catch {
       setErrorMsg("Failed to load post")
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [id])
+
+  useEffect(() => {
+    loadPost()
+  }, [loadPost])
 
   function handleTitleChange(val: string) {
     setTitle(val)
@@ -139,7 +134,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
       } else {
         setFeaturedImageUrl(json.url)
       }
-    } catch (err) {
+    } catch {
       setImageError('Network error')
     } finally {
       setImageUploading(false)

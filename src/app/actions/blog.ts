@@ -1,7 +1,4 @@
-'use server'
-
-import { supabaseAdmin } from '@/lib/supabase-admin'
-import { revalidatePath } from 'next/cache'
+import { BlogPost } from '@/types/blog'
 
 export async function getPublishedBlogPosts() {
   const { data, error } = await supabaseAdmin
@@ -132,12 +129,17 @@ export async function createBlankBlogPost() {
   }
   
   revalidatePath('/admin/blog')
-  return data.id
+  return data
 }
 
-export async function updateBlogPost(id: string, updates: any) {
-  if (updates.status === 'published' && (!updates.slug || updates.slug.trim() === '')) {
-    throw new Error('A URL slug is required to publish.')
+export async function updateBlogPost(id: string, updates: Partial<BlogPost> | any) {
+  if (updates.status === 'published') {
+    if (!updates.slug || updates.slug.trim() === '') {
+      throw new Error('A URL slug is required to publish.')
+    }
+    // Copy draft values to live columns when publishing
+    if (updates.draft_title !== undefined) updates.title = updates.draft_title;
+    if (updates.draft_body !== undefined) updates.content = updates.draft_body;
   }
 
   // If this post is being set as featured, unset all others first
