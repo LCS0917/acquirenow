@@ -104,6 +104,11 @@ The merge pattern in `src/app/page.tsx` / `src/app/blog/page.tsx` layers DB
 values on top of local defaults, skipping empty strings. Don't break this
 fallback — if Supabase is unreachable, the site must still render.
 
+## Commit conventions
+
+**Do not add `Co-Authored-By: Claude` trailers to commits.** The owner has
+asked to keep that off the public git history.
+
 ## Working norms
 
 - **Verify before claiming done**: run `npx tsc --noEmit` after JSX edits. Past
