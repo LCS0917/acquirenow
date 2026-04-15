@@ -6,15 +6,38 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const navigation = [
-  { name: "Work", href: "/work" },
-  { name: "VBC Index", href: "/vbcindex" },
-  { name: "Insights", href: "/blog" },
-  { name: "About", href: "/about" },
-];
+interface HeaderProps {
+  data?: {
+    nav1Label: string;
+    nav1Url: string;
+    nav2Label: string;
+    nav2Url: string;
+    nav3Label: string;
+    nav3Url: string;
+    nav4Label: string;
+    nav4Url: string;
+    emailLabel: string;
+    emailUrl: string;
+  };
+}
 
-export default function Header() {
+export default function Header({ data }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const navigation = data ? [
+    { name: data.nav1Label, href: data.nav1Url },
+    { name: data.nav2Label, href: data.nav2Url },
+    { name: data.nav3Label, href: data.nav3Url },
+    { name: data.nav4Label, href: data.nav4Url },
+  ] : [
+    { name: "Work", href: "/work" },
+    { name: "VBC Index", href: "/vbcindex" },
+    { name: "Insights", href: "/blog" },
+    { name: "About", href: "/about" },
+  ];
+
+  const emailLabel = data?.emailLabel || "Email";
+  const emailUrl = data?.emailUrl || "mailto:lena@acquirenowhq.com";
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-brand-neutral">
@@ -73,7 +96,7 @@ export default function Header() {
           ))}
           <div className="pt-8 border-t border-brand-neutral">
              <p className="text-[12px] font-bold uppercase tracking-[0.4em] text-brand-plum/70 mb-4">Contact</p>
-             <a href="mailto:lena@acquirenowhq.com" className="text-lg text-brand-plum hover:text-brand-dark transition-colors italic">lena@acquirenowhq.com</a>
+             <a href={emailUrl} className="text-lg text-brand-plum hover:text-brand-dark transition-colors italic">{emailUrl.replace('mailto:', '')}</a>
           </div>
         </div>
       </div>

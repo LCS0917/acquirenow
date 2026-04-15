@@ -104,8 +104,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <p className="text-xl text-brand-plum/70 max-w-md mb-8 italic leading-relaxed">
               Healthcare operator specialized in product strategy, go-to-market execution, and value-based care delivery.
             </p>
-            <Link href="/about" target="_blank" rel="noopener noreferrer" className="brand-button-primary bg-brand-plum hover:bg-brand-dark">
-              Learn More About Lena
+            <Link 
+              href={insightsPage.learnMoreUrl} 
+              target={insightsPage.learnMoreUrl.startsWith('http') ? "_blank" : undefined} 
+              rel={insightsPage.learnMoreUrl.startsWith('http') ? "noopener noreferrer" : undefined} 
+              className="brand-button-primary bg-brand-plum hover:bg-brand-dark"
+            >
+              {insightsPage.learnMoreCta}
               <ArrowRight className="ml-3 w-4 h-4" />
             </Link>
           </div>

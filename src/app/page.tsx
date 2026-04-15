@@ -29,6 +29,7 @@ export default async function Home() {
         headline: cmsContent.hero?.headline || localCmsData.homepage.hero.headline,
         subhead: cmsContent.hero?.subhead || localCmsData.homepage.hero.subhead,
         cta: cmsContent.hero?.cta || localCmsData.homepage.hero.cta,
+        ctaUrl: cmsContent.hero?.ctaUrl || localCmsData.homepage.hero.ctaUrl,
       },
       valueProps: localCmsData.homepage.valueProps.map((prop, i) => {
         const cmsProp = cmsContent[`valueProp${i+1}`];
@@ -38,7 +39,7 @@ export default async function Home() {
           caption: cmsProp?.caption || prop.caption,
         };
       }),
-      valuePropsViewAllCta: cmsContent.valuePropsCta?.viewAllCta || localCmsData.homepage.valuePropsViewAllCta,
+      valuePropsCta: merge(localCmsData.homepage.valuePropsCta, cmsContent.valuePropsCta),
       vbcIndexSection: merge(localCmsData.homepage.vbcIndexSection, cmsContent.vbcIndexSection),
       featuredInsightSection: merge(localCmsData.homepage.featuredInsightSection, cmsContent.featuredInsightSection),
       testimonial: merge(localCmsData.homepage.testimonial, cmsContent.testimonial),

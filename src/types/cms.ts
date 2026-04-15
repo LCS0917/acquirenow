@@ -40,6 +40,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'headline', label: 'Hero Headline', type: 'textarea' },
           { key: 'subhead', label: 'Hero Subhead', type: 'textarea' },
           { key: 'cta', label: 'Call to Action Label', type: 'text' },
+          { key: 'ctaUrl', label: 'Call to Action URL', type: 'url' },
         ]
       },
       {
@@ -78,6 +79,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         group: 'Value Propositions',
         fields: [
           { key: 'viewAllCta', label: 'View All Work Label', type: 'text' },
+          { key: 'viewAllUrl', label: 'View All Work URL', type: 'url' },
         ]
       },
       {
@@ -89,6 +91,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'headline', label: 'Headline', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
           { key: 'cta', label: 'Button Label', type: 'text' },
+          { key: 'ctaUrl', label: 'Button URL', type: 'url' },
         ]
       },
       {
@@ -99,6 +102,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'headline', label: 'Headline', type: 'text' },
           { key: 'description', label: 'Description', type: 'textarea' },
           { key: 'viewAllCta', label: 'View All Text', type: 'text' },
+          { key: 'viewAllUrl', label: 'View All URL', type: 'url' },
           { key: 'readArticleCta', label: 'Read Article Text', type: 'text' },
         ]
       },
@@ -161,6 +165,54 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'approach', label: 'Approach Label', type: 'text' },
           { key: 'outcome', label: 'Outcome Label', type: 'text' },
         ]
+      },
+      {
+        section_key: 'entry1',
+        label: 'Entry 1 (Scout)',
+        group: 'Case Studies',
+        fields: [
+          { key: 'company', label: 'Company', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'problem', label: 'Problem', type: 'textarea' },
+          { key: 'approach', label: 'Approach', type: 'textarea' },
+          { key: 'outcome', label: 'Outcome', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'entry2',
+        label: 'Entry 2 (Navigating Cancer)',
+        group: 'Case Studies',
+        fields: [
+          { key: 'company', label: 'Company', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'problem', label: 'Problem', type: 'textarea' },
+          { key: 'approach', label: 'Approach', type: 'textarea' },
+          { key: 'outcome', label: 'Outcome', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'entry3',
+        label: 'Entry 3 (UCSF)',
+        group: 'Case Studies',
+        fields: [
+          { key: 'company', label: 'Company', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'problem', label: 'Problem', type: 'textarea' },
+          { key: 'approach', label: 'Approach', type: 'textarea' },
+          { key: 'outcome', label: 'Outcome', type: 'textarea' },
+        ]
+      },
+      {
+        section_key: 'entry4',
+        label: 'Entry 4 (Silene)',
+        group: 'Case Studies',
+        fields: [
+          { key: 'company', label: 'Company', type: 'text' },
+          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'problem', label: 'Problem', type: 'textarea' },
+          { key: 'approach', label: 'Approach', type: 'textarea' },
+          { key: 'outcome', label: 'Outcome', type: 'textarea' },
+        ]
       }
     ]
   },
@@ -177,8 +229,10 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'headline', label: 'Hero Headline', type: 'text' },
           { key: 'intro', label: 'Hero Introduction', type: 'textarea' },
           { key: 'ctaTop', label: 'Top Button Text', type: 'text' },
+          { key: 'ctaTopUrl', label: 'Top Button URL', type: 'url' },
           { key: 'bottomCtaHeadline', label: 'Bottom Headline', type: 'text' },
           { key: 'ctaBottom', label: 'Bottom Button Text', type: 'text' },
+          { key: 'ctaBottomUrl', label: 'Bottom Button URL', type: 'url' },
         ]
       },
       {
@@ -250,6 +304,8 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'headline', label: 'CTA Headline', type: 'text' },
           { key: 'description', label: 'CTA Description', type: 'textarea' },
           { key: 'cta', label: 'Button Text', type: 'text' },
+          { key: 'ctaUrl', label: 'Button URL', type: 'url' },
+          { key: 'linkedinLabel', label: 'LinkedIn Label', type: 'text' },
           { key: 'linkedinUrl', label: 'LinkedIn URL', type: 'url' },
         ]
       }
@@ -269,6 +325,37 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
           { key: 'brandingText', label: 'Branding Text', type: 'text' },
           { key: 'readMoreCta', label: 'Read More Label', type: 'text' },
           { key: 'backToInsightsCta', label: 'Back Link Label', type: 'text' },
+          { key: 'learnMoreCta', label: 'Author Learn More Text', type: 'text' },
+          { key: 'learnMoreUrl', label: 'Author Learn More URL', type: 'url' },
+        ]
+      }
+    ]
+  },
+  {
+    page_key: 'global',
+    label: 'Global Content',
+    sections: [
+      {
+        section_key: 'footer',
+        label: 'Footer & Layout',
+        group: 'Layout',
+        fields: [
+          { key: 'tagline', label: 'Footer Tagline', type: 'textarea' },
+          { key: 'navTitle', label: 'Navigation Title', type: 'text' },
+          { key: 'contactTitle', label: 'Contact Title', type: 'text' },
+          { key: 'emailLabel', label: 'Email Label', type: 'text' },
+          { key: 'emailUrl', label: 'Email URL', type: 'url' },
+          { key: 'linkedinLabel', label: 'LinkedIn Label', type: 'text' },
+          { key: 'linkedinUrl', label: 'LinkedIn URL', type: 'url' },
+          { key: 'copyrightText', label: 'Copyright Text', type: 'text' },
+          { key: 'nav1Label', label: 'Nav Item 1 Label', type: 'text' },
+          { key: 'nav1Url', label: 'Nav Item 1 URL', type: 'url' },
+          { key: 'nav2Label', label: 'Nav Item 2 Label', type: 'text' },
+          { key: 'nav2Url', label: 'Nav Item 2 URL', type: 'url' },
+          { key: 'nav3Label', label: 'Nav Item 3 Label', type: 'text' },
+          { key: 'nav3Url', label: 'Nav Item 3 URL', type: 'url' },
+          { key: 'nav4Label', label: 'Nav Item 4 Label', type: 'text' },
+          { key: 'nav4Url', label: 'Nav Item 4 URL', type: 'url' },
         ]
       }
     ]
@@ -281,23 +368,29 @@ export interface CMSData {
       headline: string;
       subhead: string;
       cta: string;
+      ctaUrl: string;
     };
     valueProps: Array<{
       data: string;
       headline: string;
       caption: string;
     }>;
-    valuePropsViewAllCta: string;
+    valuePropsCta: {
+      viewAllCta: string;
+      viewAllUrl: string;
+    };
     vbcIndexSection: {
       badge: string;
       headline: string;
       description: string;
       cta: string;
+      ctaUrl: string;
     };
     featuredInsightSection: {
       headline: string;
       description: string;
       viewAllCta: string;
+      viewAllUrl: string;
       readArticleCta: string;
     };
     testimonial: {
@@ -331,8 +424,10 @@ export interface CMSData {
     headline: string;
     intro: string;
     ctaTop: string;
+    ctaTopUrl: string;
     bottomCtaHeadline: string;
     ctaBottom: string;
+    ctaBottomUrl: string;
     section1: {
       headline: string;
       description: string;
@@ -353,6 +448,8 @@ export interface CMSData {
       headline: string;
       description: string;
       cta: string;
+      ctaUrl: string;
+      linkedinLabel: string;
       linkedinUrl: string;
     };
   };
@@ -362,5 +459,27 @@ export interface CMSData {
     brandingText: string;
     readMoreCta: string;
     backToInsightsCta: string;
+    learnMoreCta: string;
+    learnMoreUrl: string;
+  };
+  global: {
+    footer: {
+      tagline: string;
+      navTitle: string;
+      contactTitle: string;
+      emailLabel: string;
+      emailUrl: string;
+      linkedinLabel: string;
+      linkedinUrl: string;
+      copyrightText: string;
+      nav1Label: string;
+      nav1Url: string;
+      nav2Label: string;
+      nav2Url: string;
+      nav3Label: string;
+      nav3Url: string;
+      nav4Label: string;
+      nav4Url: string;
+    };
   };
 }

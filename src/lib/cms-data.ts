@@ -6,6 +6,7 @@ export const cmsData: CMSData = {
       headline: "I build and launch healthcare products that drive revenue and align complex organizations.",
       subhead: "Operator across product, go-to-market, and enterprise healthcare systems. I work where strategy breaks down and execution needs to actually happen.",
       cta: "View Work",
+      ctaUrl: "/work",
     },
     valueProps: [
       {
@@ -24,17 +25,22 @@ export const cmsData: CMSData = {
         caption: "Work across clinical, product, and executive teams to move initiatives forward inside complex, matrixed organizations.",
       },
     ],
-    valuePropsViewAllCta: "View Results",
+    valuePropsCta: {
+      viewAllCta: "View Results",
+      viewAllUrl: "/work",
+    },
     vbcIndexSection: {
       badge: "New Product",
       headline: "VBCIndex: A Product Approach to Value-Based Care",
       description: "A system designed to make value-based care data actionable. Built to explore market opportunities, operational friction, and where organizations fit within evolving reimbursement models.",
       cta: "Learn More",
+      ctaUrl: "/vbcindex",
     },
     featuredInsightSection: {
       headline: "Featured Insight",
       description: "Thoughts on healthcare operations, product strategy, and the transition to value-based care.",
       viewAllCta: "View All Insights →",
+      viewAllUrl: "/blog",
       readArticleCta: "Read Article",
     },
     testimonial: {
@@ -107,8 +113,10 @@ export const cmsData: CMSData = {
     headline: "The VBC Index",
     intro: "VBCIndex is a product built to make value-based care easier to understand and act on.",
     ctaTop: "Explore the Index",
+    ctaTopUrl: "/vbcindex",
     bottomCtaHeadline: "Ready to act on the right opportunities?",
     ctaBottom: "Get Started with VBCIndex",
+    ctaBottomUrl: "mailto:lena@acquirenowhq.com",
     section1: {
       headline: "More Intelligence. Less Friction.",
       description: "Value-based care can unlock existing revenue, but most organizations don’t have the time, resources, or tools to connect the dots. VBCIndex, connects the dots for you.",
@@ -144,6 +152,8 @@ export const cmsData: CMSData = {
       headline: "Let's Connect",
       description: "Always looking for new challenges in healthcare innovation and operations.",
       cta: "Get in Touch",
+      ctaUrl: "mailto:lena@acquirenowhq.com",
+      linkedinLabel: "LinkedIn",
       linkedinUrl: "https://www.linkedin.com/in/lenacshaw/",
     },
   },
@@ -153,5 +163,27 @@ export const cmsData: CMSData = {
     brandingText: "Insights Dept.",
     readMoreCta: "Read More →",
     backToInsightsCta: "← Back to Insights",
+    learnMoreCta: "Learn More About Lena",
+    learnMoreUrl: "/about",
   },
+  global: {
+    footer: {
+      tagline: "Strategic operations and product leadership for the next generation of healthcare delivery.",
+      navTitle: "Navigation",
+      contactTitle: "Contact",
+      emailLabel: "Email",
+      emailUrl: "mailto:lena@acquirenowhq.com",
+      linkedinLabel: "LinkedIn",
+      linkedinUrl: "https://www.linkedin.com/in/lenacshaw/",
+      copyrightText: "AcquireNow.",
+      nav1Label: "Work",
+      nav1Url: "/work",
+      nav2Label: "VBC Index",
+      nav2Url: "/vbcindex",
+      nav3Label: "Insights",
+      nav3Url: "/blog",
+      nav4Label: "About",
+      nav4Url: "/about",
+    }
+  }
 };

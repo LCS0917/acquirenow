@@ -4,7 +4,6 @@ import { ChevronRight } from "lucide-react";
 
 export default async function WorkPage() {
   const cmsContent = await getCmsPage('workPage');
-  const homepageCmsContent = await getCmsPage('homepage');
 
   // Helper to merge CMS content with local defaults, ignoring empty values
   const merge = (local: any, cms: any) => {
@@ -28,6 +27,18 @@ export default async function WorkPage() {
   const howItWorksSteps = localCmsData.workPage.howItWorks.map((step, i) => 
     merge(step, cmsContent[`howItWorksStep${i+1}`])
   );
+
+  const entries = localCmsData.workPage.entries.map((entry, i) => {
+    const cmsEntry = cmsContent[`entry${i+1}`];
+    return {
+      ...entry,
+      company: cmsEntry?.company || entry.company,
+      title: cmsEntry?.title || entry.title,
+      problem: cmsEntry?.problem || entry.problem,
+      approach: cmsEntry?.approach || entry.approach,
+      outcome: cmsEntry?.outcome || entry.outcome,
+    };
+  });
 
   return (
     <div className="bg-white">
@@ -69,7 +80,7 @@ export default async function WorkPage() {
       <section className="py-24 bg-brand-neutral/20 border-t border-brand-neutral">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col gap-32 lg:gap-40">
-            {workPage.entries.map((entry, index) => (
+            {entries.map((entry, index) => (
               <article key={entry.id} id={entry.slug} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 relative group/article">
                 <div className="lg:col-span-5 lg:sticky lg:top-40 lg:self-start">
                   <div className="flex items-center gap-6 mb-8">

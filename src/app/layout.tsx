@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 
 import Header from "@/components/Header";
+import { getCmsPage } from "@/app/actions/cms";
+import { cmsData as localCmsData } from "@/lib/cms-data";
 
 const openSans = Open_Sans({
   subsets: ["latin"],
@@ -26,15 +28,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cmsContent = await getCmsPage('global');
+  
+  const merge = (local: any, cms: any) => {
+    if (!cms) return local;
+    const result = { ...local };
+    for (const key in cms) {
+      if (cms[key] !== undefined && cms[key] !== null && cms[key] !== '') {
+        result[key] = cms[key];
+      }
+    }
+    return result;
+  };
+
+  const footer = merge(localCmsData.global.footer, cmsContent.footer);
+
   return (
     <html lang="en" className={cn("h-full", openSans.variable, montserrat.variable)}>
       <body className="min-h-full flex flex-col font-sans text-brand-dark bg-white">
-        <Header />
+        <Header data={footer} />
         <main className="flex-grow">{children}</main>
         <footer className="bg-[#1a191b] text-white py-20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-1/3 h-full bg-brand-plum opacity-5 skew-x-[-12deg] translate-x-20" />
@@ -52,30 +69,30 @@ export default function RootLayout({
                   </div>
                 </Link>
                 <p className="text-brand-neutral/70 text-lg max-w-sm leading-relaxed italic border-l-2 border-brand-gold/80 pl-8">
-                  Strategic operations and product leadership for the next generation of healthcare delivery.
+                  {footer.tagline}
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-12">
                 <div>
-                  <h4 className="text-[12px] uppercase tracking-[0.5em] font-bold mb-8 text-brand-gold">Navigation</h4>
+                  <h4 className="text-[12px] uppercase tracking-[0.5em] font-bold mb-8 text-brand-gold">{footer.navTitle}</h4>
                   <ul className="space-y-4 text-[12px] font-bold uppercase tracking-[0.4em]">
-                    <li><Link href="/work" className="hover:text-brand-gold transition-colors">Work</Link></li>
-                    <li><Link href="/vbcindex" className="hover:text-brand-gold transition-colors">VBC Index</Link></li>
-                    <li><Link href="/blog" className="hover:text-brand-gold transition-colors">Insights</Link></li>
-                    <li><Link href="/about" className="hover:text-brand-gold transition-colors">About</Link></li>
+                    <li><Link href={footer.nav1Url} className="hover:text-brand-gold transition-colors">{footer.nav1Label}</Link></li>
+                    <li><Link href={footer.nav2Url} className="hover:text-brand-gold transition-colors">{footer.nav2Label}</Link></li>
+                    <li><Link href={footer.nav3Url} className="hover:text-brand-gold transition-colors">{footer.nav3Label}</Link></li>
+                    <li><Link href={footer.nav4Url} className="hover:text-brand-gold transition-colors">{footer.nav4Label}</Link></li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-[12px] uppercase tracking-[0.5em] font-bold mb-8 text-brand-gold">Contact</h4>
+                  <h4 className="text-[12px] uppercase tracking-[0.5em] font-bold mb-8 text-brand-gold">{footer.contactTitle}</h4>
                   <ul className="space-y-4 text-[12px] font-bold uppercase tracking-[0.4em]">
-                    <li><a href="mailto:lena@acquirenowhq.com" className="hover:text-brand-gold transition-colors">Email</a></li>
-                    <li><a href="https://www.linkedin.com/in/lenacshaw/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">LinkedIn</a></li>
+                    <li><a href={footer.emailUrl} className="hover:text-brand-gold transition-colors">{footer.emailLabel}</a></li>
+                    <li><a href={footer.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors">{footer.linkedinLabel}</a></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-[12px] uppercase tracking-[0.5em] font-bold text-brand-neutral/60">
-              <span>© {new Date().getFullYear()} AcquireNow.</span>
+              <span>© {new Date().getFullYear()} {footer.copyrightText}</span>
               <div className="flex gap-12">
                 <Link href="/admin/blog" className="hover:text-brand-gold transition-colors">Admin Dashboard</Link>
               </div>
