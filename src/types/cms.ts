@@ -10,7 +10,7 @@ export interface CmsPage {
 export interface CmsField {
   key: string;
   label: string;
-  type: 'text' | 'textarea' | 'url';
+  type: 'text' | 'textarea' | 'url' | 'image';
   placeholder?: string;
 }
 
@@ -346,7 +346,7 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         fields: [
           { key: 'siteTitle', label: 'Site Title', type: 'text', placeholder: 'AcquireNow | Healthcare Marketing Leadership' },
           { key: 'siteDescription', label: 'Meta Description', type: 'textarea', placeholder: 'Healthcare marketing and product leader...' },
-          { key: 'ogImageUrl', label: 'Social Preview Image URL', type: 'url', placeholder: 'https://...' },
+          { key: 'ogImageUrl', label: 'Social Preview Image', type: 'image' },
         ]
       }
     ]

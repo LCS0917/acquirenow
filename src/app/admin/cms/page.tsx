@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect, useTransition, useMemo } from 'react'
+import { useState, useEffect, useTransition, useMemo, useRef } from 'react'
 import { getAllCmsPages, updateCmsSection } from '@/app/actions/cms'
 import { CMS_PAGE_DEFINITIONS, CmsPage } from '@/types/cms'
-import { Save, CheckCircle2, Loader2, FileText, Layout, AlertCircle } from 'lucide-react'
+import { Save, CheckCircle2, Loader2, FileText, Layout, AlertCircle, Upload } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export default function AdminCmsPage() {
@@ -14,6 +14,9 @@ export default function AdminCmsPage() {
   const [originalValues, setOriginalValues] = useState<Record<string, string>>({})
   const [saved, setSaved] = useState(false)
   const [isPending, startTransition] = useTransition()
+  const [imageUploading, setImageUploading] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const uploadingFieldRef = useRef<string | null>(null)
 
   useEffect(() => { 
     getAllCmsPages().then(setPages) 
@@ -93,6 +96,25 @@ export default function AdminCmsPage() {
     })
     return groups
   }, [pageDef])
+
+  async function handleImageUpload(fieldKey: string, file: File) {
+    setImageUploading(fieldKey)
+    const form = new FormData()
+    form.append('file', file)
+    try {
+      const res = await fetch('/api/admin/blog/upload-image', { method: 'POST', body: form })
+      const json = await res.json()
+      if (res.ok) {
+        setEditValues(v => ({ ...v, [fieldKey]: json.url }))
+      } else {
+        alert(json.error || 'Upload failed')
+      }
+    } catch {
+      alert('Network error during upload')
+    } finally {
+      setImageUploading(null)
+    }
+  }
 
   return (
     <div className="p-8 lg:p-12 bg-brand-neutral/30 min-h-screen">
@@ -208,7 +230,43 @@ export default function AdminCmsPage() {
                             <span className="text-[9px] font-bold text-brand-gold uppercase tracking-widest px-2 py-0.5 bg-brand-gold/10 rounded-sm">Edited</span>
                           )}
                         </div>
-                        {field.type === 'textarea' ? (
+                        {field.type === 'image' ? (
+                          <div className="space-y-4">
+                            {editValues[field.key] && (
+                              <div className="relative border border-brand-plum/10 rounded-xl overflow-hidden aspect-[2/1] bg-brand-neutral/20">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img src={editValues[field.key]} alt="Preview" className="w-full h-full object-cover" />
+                                <button
+                                  type="button"
+                                  onClick={() => setEditValues(v => ({ ...v, [field.key]: '' }))}
+                                  className="absolute top-2 right-2 px-2 py-1 bg-black/70 text-white text-[9px] font-bold uppercase tracking-widest rounded-sm hover:bg-black"
+                                >
+                                  Remove
+                                </button>
+                              </div>
+                            )}
+                            <input
+                              ref={fileInputRef}
+                              type="file"
+                              accept="image/jpeg,image/png,image/webp,image/gif"
+                              className="hidden"
+                              onChange={e => {
+                                const f = e.target.files?.[0]
+                                if (f && uploadingFieldRef.current) handleImageUpload(uploadingFieldRef.current, f)
+                                e.target.value = ''
+                              }}
+                            />
+                            <button
+                              type="button"
+                              disabled={imageUploading === field.key}
+                              onClick={() => { uploadingFieldRef.current = field.key; fileInputRef.current?.click() }}
+                              className="w-full flex items-center justify-center gap-3 border border-brand-plum/20 rounded-xl px-6 py-4 bg-brand-neutral/30 hover:bg-brand-neutral/60 transition-all text-[11px] font-bold uppercase tracking-widest text-brand-plum/60 disabled:opacity-50"
+                            >
+                              {imageUploading === field.key ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                              {editValues[field.key] ? 'Replace Image' : 'Upload Image'}
+                            </button>
+                          </div>
+                        ) : field.type === 'textarea' ? (
                           <textarea
                             rows={4}
                             value={editValues[field.key] ?? ''}
