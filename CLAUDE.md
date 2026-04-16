@@ -92,6 +92,14 @@ Don't assume ideas are edit-ready drafts.
 - `/admin/blog/[id]` — editor (tricky JSX nesting — previously broken by
   Gemini; verify div balance after edits)
 - `/admin/blog/generate` — AI drafting assistant
+- `/admin/cms` — CMS page editor (homepage, work, VBC index, about, insights,
+  global footer, **Site Settings**)
+
+### Blog editor — publish date
+
+The sidebar has a **Publish Date** field. If set, it overrides `published_at`
+on every save. If left blank, `published_at` auto-sets to the current timestamp
+on first publish.
 
 ## CMS (non-blog content)
 
@@ -103,6 +111,33 @@ Homepage / insights page / etc. copy lives in two places:
 The merge pattern in `src/app/page.tsx` / `src/app/blog/page.tsx` layers DB
 values on top of local defaults, skipping empty strings. Don't break this
 fallback — if Supabase is unreachable, the site must still render.
+
+### CMS field types
+
+`src/types/cms.ts` defines four field types: `text`, `textarea`, `url`,
+`image`. The `image` type renders a file-upload button in the CMS editor;
+uploaded files go to the `blog-images` Supabase bucket via
+`POST /api/admin/blog/upload-image`.
+
+### Site Settings (CMS page key: `siteSettings`)
+
+Editable fields: **Site Title**, **Meta Description**, **Social Preview Image**
+(upload). Values feed into `generateMetadata()` in `src/app/layout.tsx` (async,
+reads from CMS at request time). Local defaults live in
+`src/lib/cms-data.ts` → `siteSettings.metadata`.
+
+### Work page — case study entries
+
+Entries no longer have a `title` field. They have `ctaLabel` (default: "Read
+Case Study") and `ctaUrl`. If `ctaUrl` is set, the CTA renders as a link;
+otherwise plain text. Edit per-entry in CMS → Work Page → Case Studies.
+
+## Favicon
+
+Favicon is served from `src/app/icon.png` (Next.js App Router auto-detects
+this). The file is a copy of `public/assets/a-logo.png`. Do **not** add a
+`favicon.ico` to `src/app/` — it overrides `icon.png` and will revert to the
+default Vercel icon.
 
 ## Commit conventions
 
