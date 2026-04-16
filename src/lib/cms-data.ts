@@ -72,7 +72,8 @@ export const cmsData: CMSData = {
     entries: [
       {
         id: "1",
-        title: "Scout Health",
+        ctaLabel: "Read Case Study",
+        ctaUrl: "",
         company: "Scout Health",
         problem: "Unclear commercial pathway for a new diagnostics platform",
         approach: "Built GTM strategy and validated market demand through early partnerships",
@@ -81,7 +82,8 @@ export const cmsData: CMSData = {
       },
       {
         id: "2",
-        title: "Navigating Cancer",
+        ctaLabel: "Read Case Study",
+        ctaUrl: "",
         company: "Navigating Cancer",
         problem: "Loss of market leadership and weak positioning",
         approach: "Rebuilt brand, messaging, and GTM strategy",
@@ -90,7 +92,8 @@ export const cmsData: CMSData = {
       },
       {
         id: "3",
-        title: "UCSF",
+        ctaLabel: "Read Case Study",
+        ctaUrl: "",
         company: "UCSF",
         problem: "Lack of alignment across digital and communications systems",
         approach: "Established governance and cross-functional coordination",
@@ -99,7 +102,8 @@ export const cmsData: CMSData = {
       },
       {
         id: "4",
-        title: "Silene Biotech",
+        ctaLabel: "Read Case Study",
+        ctaUrl: "",
         company: "Silene Biotech",
         problem: "Early-stage concept lacked scalable GTM",
         approach: "Built product positioning and commercial infrastructure",

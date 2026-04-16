@@ -80,7 +80,7 @@ export default function Header({ data }: HeaderProps) {
 
       {/* Mobile Navigation */}
       <div className={cn(
-        "fixed inset-0 top-20 bg-white z-40 md:hidden transition-transform duration-300 ease-in-out",
+        "fixed inset-0 top-20 bg-white z-[100] md:hidden transition-transform duration-300 ease-in-out",
         isOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <div className="flex flex-col p-8 space-y-8">

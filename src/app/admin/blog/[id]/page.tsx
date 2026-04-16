@@ -44,6 +44,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
   const [status, setStatus] = useState<BlogStatus>('draft')
   const [isFeatured, setIsFeatured] = useState(false)
   const [featuredImageUrl, setFeaturedImageUrl] = useState<string>('')
+  const [publishedAt, setPublishedAt] = useState<string>('')
 
   const [generateTheme, setGenerateTheme] = useState<'light' | 'dark'>('light')
   const [isGeneratingImage, setIsGeneratingImage] = useState(false)
@@ -69,6 +70,7 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
         setStatus(post.status || 'draft')
         setIsFeatured(post.is_featured || false)
         setFeaturedImageUrl(post.featured_image_url || '')
+        setPublishedAt(post.published_at ? post.published_at.slice(0, 10) : '')
       } else {
         setErrorMsg("Post not found")
       }
@@ -162,7 +164,9 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
           featured_image_url: featuredImageUrl || null
         }
 
-        if (statusToSave === 'published' && status !== 'published') {
+        if (publishedAt) {
+          payload.published_at = new Date(publishedAt).toISOString()
+        } else if (statusToSave === 'published' && status !== 'published') {
           payload.published_at = new Date().toISOString()
         }
 
@@ -299,6 +303,22 @@ export default function AdminBlogEditPage({ params }: { params: Promise<{ id: st
                     Promote this article to the primary slot on the home landing page.
                   </p>
                 </div>
+              </div>
+
+              {/* Published Date */}
+              <div className="group">
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-2 group-focus-within:text-brand-plum transition-colors">
+                  Publish Date
+                </label>
+                <input
+                  type="date"
+                  value={publishedAt}
+                  onChange={(e) => setPublishedAt(e.target.value)}
+                  className="w-full px-4 py-3 bg-brand-neutral/10 border border-brand-neutral/30 focus:bg-white focus:border-brand-plum/30 rounded-sm text-[10px] font-bold transition-all outline-none"
+                />
+                <p className="text-[8px] text-gray-400 mt-2 font-bold uppercase tracking-widest italic">
+                  Overrides auto-set date on publish
+                </p>
               </div>
 
               {/* URL Slug */}

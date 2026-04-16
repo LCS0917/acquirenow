@@ -21,10 +21,21 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "AcquireNow | Lena Shaw",
-  description: "Healthcare Operations & Product Strategy",
+  title: "AcquireNow | Healthcare Marketing Leadership",
+  description: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations. Proven track record across digital health, value-based care, and enterprise GTM strategy.",
   icons: {
     icon: "/assets/a-logo.png",
+  },
+  openGraph: {
+    title: "AcquireNow | Healthcare Marketing Leadership",
+    description: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations. Proven track record across digital health, value-based care, and enterprise GTM strategy.",
+    images: [{ url: "/assets/og-image.png", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AcquireNow | Healthcare Marketing Leadership",
+    description: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations.",
+    images: ["/assets/og-image.png"],
   },
 };
 
@@ -93,9 +104,6 @@ export default async function RootLayout({
             </div>
             <div className="pt-10 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-[12px] uppercase tracking-[0.5em] font-bold text-brand-neutral/60">
               <span>© {new Date().getFullYear()} {footer.copyrightText}</span>
-              <div className="flex gap-12">
-                <Link href="/admin/blog" className="hover:text-brand-gold transition-colors">Admin Dashboard</Link>
-              </div>
             </div>
           </div>
         </footer>

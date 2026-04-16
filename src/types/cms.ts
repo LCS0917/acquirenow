@@ -172,7 +172,8 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         group: 'Case Studies',
         fields: [
           { key: 'company', label: 'Company', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'ctaLabel', label: 'CTA Label', type: 'text', placeholder: 'Read Case Study' },
+          { key: 'ctaUrl', label: 'CTA Link', type: 'url', placeholder: 'https://...' },
           { key: 'problem', label: 'Problem', type: 'textarea' },
           { key: 'approach', label: 'Approach', type: 'textarea' },
           { key: 'outcome', label: 'Outcome', type: 'textarea' },
@@ -184,7 +185,8 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         group: 'Case Studies',
         fields: [
           { key: 'company', label: 'Company', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'ctaLabel', label: 'CTA Label', type: 'text', placeholder: 'Read Case Study' },
+          { key: 'ctaUrl', label: 'CTA Link', type: 'url', placeholder: 'https://...' },
           { key: 'problem', label: 'Problem', type: 'textarea' },
           { key: 'approach', label: 'Approach', type: 'textarea' },
           { key: 'outcome', label: 'Outcome', type: 'textarea' },
@@ -196,7 +198,8 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         group: 'Case Studies',
         fields: [
           { key: 'company', label: 'Company', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'ctaLabel', label: 'CTA Label', type: 'text', placeholder: 'Read Case Study' },
+          { key: 'ctaUrl', label: 'CTA Link', type: 'url', placeholder: 'https://...' },
           { key: 'problem', label: 'Problem', type: 'textarea' },
           { key: 'approach', label: 'Approach', type: 'textarea' },
           { key: 'outcome', label: 'Outcome', type: 'textarea' },
@@ -208,7 +211,8 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
         group: 'Case Studies',
         fields: [
           { key: 'company', label: 'Company', type: 'text' },
-          { key: 'title', label: 'Title', type: 'text' },
+          { key: 'ctaLabel', label: 'CTA Label', type: 'text', placeholder: 'Read Case Study' },
+          { key: 'ctaUrl', label: 'CTA Link', type: 'url', placeholder: 'https://...' },
           { key: 'problem', label: 'Problem', type: 'textarea' },
           { key: 'approach', label: 'Approach', type: 'textarea' },
           { key: 'outcome', label: 'Outcome', type: 'textarea' },
@@ -411,7 +415,8 @@ export interface CMSData {
     };
     entries: Array<{
       id: string;
-      title: string;
+      ctaLabel: string;
+      ctaUrl: string;
       company: string;
       problem: string;
       approach: string;

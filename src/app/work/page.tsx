@@ -1,6 +1,7 @@
 import { getCmsPage } from "@/app/actions/cms";
 import { cmsData as localCmsData } from "@/lib/cms-data";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 export default async function WorkPage() {
   const cmsContent = await getCmsPage('workPage');
@@ -33,7 +34,8 @@ export default async function WorkPage() {
     return {
       ...entry,
       company: cmsEntry?.company || entry.company,
-      title: cmsEntry?.title || entry.title,
+      ctaLabel: cmsEntry?.ctaLabel || entry.ctaLabel,
+      ctaUrl: cmsEntry?.ctaUrl || entry.ctaUrl,
       problem: cmsEntry?.problem || entry.problem,
       approach: cmsEntry?.approach || entry.approach,
       outcome: cmsEntry?.outcome || entry.outcome,
@@ -90,10 +92,25 @@ export default async function WorkPage() {
                   <h2 className="text-4xl md:text-5xl lg:text-6xl mb-6 group-hover/article:text-brand-plum transition-colors leading-tight text-brand-dark font-display font-bold">
                     {entry.company}
                   </h2>
-                  <div className="flex items-center gap-3 text-brand-plum">
-                    <div className="w-8 h-px bg-brand-gold" />
-                    <p className="font-bold text-[12px] uppercase tracking-[0.3em]">{entry.title}</p>
-                  </div>
+                  {entry.ctaUrl ? (
+                    <Link
+                      href={entry.ctaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 text-brand-plum group/cta"
+                    >
+                      <div className="w-8 h-px bg-brand-gold group-hover/cta:w-12 transition-all duration-300" />
+                      <span className="font-bold text-[12px] uppercase tracking-[0.3em] underline underline-offset-4 decoration-brand-gold/50 group-hover/cta:text-brand-dark transition-colors">
+                        {entry.ctaLabel}
+                      </span>
+                      <ChevronRight className="w-3 h-3 opacity-0 group-hover/cta:opacity-100 transition-opacity" />
+                    </Link>
+                  ) : entry.ctaLabel ? (
+                    <div className="flex items-center gap-3 text-brand-plum">
+                      <div className="w-8 h-px bg-brand-gold" />
+                      <p className="font-bold text-[12px] uppercase tracking-[0.3em]">{entry.ctaLabel}</p>
+                    </div>
+                  ) : null}
                 </div>
                 
                 <div className="lg:col-span-7 flex flex-col gap-16">
