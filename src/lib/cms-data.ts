@@ -170,6 +170,13 @@ export const cmsData: CMSData = {
     learnMoreCta: "Learn More About Lena",
     learnMoreUrl: "/about",
   },
+  siteSettings: {
+    metadata: {
+      siteTitle: "AcquireNow | Healthcare Marketing Leadership",
+      siteDescription: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations. Proven track record across digital health, value-based care, and enterprise GTM strategy.",
+      ogImageUrl: "/assets/og-image.png",
+    }
+  },
   global: {
     footer: {
       tagline: "Strategic operations and product leadership for the next generation of healthcare delivery.",

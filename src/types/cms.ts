@@ -336,6 +336,22 @@ export const CMS_PAGE_DEFINITIONS: CmsPageDefinition[] = [
     ]
   },
   {
+    page_key: 'siteSettings',
+    label: 'Site Settings',
+    sections: [
+      {
+        section_key: 'metadata',
+        label: 'SEO & Metadata',
+        group: 'SEO',
+        fields: [
+          { key: 'siteTitle', label: 'Site Title', type: 'text', placeholder: 'AcquireNow | Healthcare Marketing Leadership' },
+          { key: 'siteDescription', label: 'Meta Description', type: 'textarea', placeholder: 'Healthcare marketing and product leader...' },
+          { key: 'ogImageUrl', label: 'Social Preview Image URL', type: 'url', placeholder: 'https://...' },
+        ]
+      }
+    ]
+  },
+  {
     page_key: 'global',
     label: 'Global Content',
     sections: [
@@ -466,6 +482,13 @@ export interface CMSData {
     backToInsightsCta: string;
     learnMoreCta: string;
     learnMoreUrl: string;
+  };
+  siteSettings: {
+    metadata: {
+      siteTitle: string;
+      siteDescription: string;
+      ogImageUrl: string;
+    };
   };
   global: {
     footer: {

@@ -20,24 +20,19 @@ const montserrat = Montserrat({
   variable: "--font-avenir",
 });
 
-export const metadata: Metadata = {
-  title: "AcquireNow | Healthcare Marketing Leadership",
-  description: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations. Proven track record across digital health, value-based care, and enterprise GTM strategy.",
-  icons: {
-    icon: "/assets/a-logo.png",
-  },
-  openGraph: {
-    title: "AcquireNow | Healthcare Marketing Leadership",
-    description: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations. Proven track record across digital health, value-based care, and enterprise GTM strategy.",
-    images: [{ url: "/assets/og-image.png", width: 1200, height: 630 }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AcquireNow | Healthcare Marketing Leadership",
-    description: "Healthcare marketing and product leader with 13+ years driving growth, launching products, and aligning cross-functional teams in complex organizations.",
-    images: ["/assets/og-image.png"],
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const cmsContent = await getCmsPage('siteSettings');
+  const defaults = localCmsData.siteSettings.metadata;
+  const title = cmsContent.metadata?.siteTitle || defaults.siteTitle;
+  const description = cmsContent.metadata?.siteDescription || defaults.siteDescription;
+  const ogImage = cmsContent.metadata?.ogImageUrl || defaults.ogImageUrl;
+  return {
+    title,
+    description,
+    openGraph: { title, description, images: [{ url: ogImage, width: 1200, height: 630 }] },
+    twitter: { card: "summary_large_image", title, description, images: [ogImage] },
+  };
+}
 
 export default async function RootLayout({
   children,
