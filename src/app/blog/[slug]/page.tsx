@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Calendar, Clock } from "lucide-react";
 import React from "react";
 import { BlogPost, BlogStatus } from "@/types/blog";
+import { sanitizeBlogHtml } from "@/lib/sanitize-html";
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -85,11 +86,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div 
             className="prose prose-lg md:prose-xl max-w-none 
               prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight 
-              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-brand-plum/90
+              prose-p:text-lg md:text-xl prose-p:leading-relaxed prose-p:text-brand-dark
               prose-blockquote:border-brand-gold prose-blockquote:bg-brand-neutral/20 prose-blockquote:p-8 md:p-12 prose-blockquote:not-italic prose-blockquote:text-2xl md:text-3xl prose-blockquote:font-display prose-blockquote:font-bold prose-blockquote:text-brand-dark
               prose-strong:text-brand-plum prose-strong:font-bold
               prose-a:text-brand-plum prose-a:font-bold prose-a:no-underline hover:prose-a:text-brand-dark transition-colors border-b-2 border-brand-gold/30 hover:border-brand-gold"
-            dangerouslySetInnerHTML={{ __html: post.content || '' }}
+            dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.content || '') }}
           />
           
           <div className="mt-24 pt-16 border-t border-brand-neutral flex flex-col items-center text-center">
